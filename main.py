@@ -73,7 +73,7 @@ class Ui_MainWindow(object):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.function_enter.setText(_translate("MainWindow", "2-4/(x*x)"))
-        self.point_enter.setText(_translate("MainWindow", "10"))
+        self.point_enter.setText(_translate("MainWindow", "oo"))
 
         self.function_enter.textChanged.connect(self.draw)
         self.point_enter.textChanged.connect(self.draw)
