@@ -77,7 +77,7 @@ class Ui_MainWindow(object):
 
         self.function_enter.textChanged.connect(self.draw)
         self.point_enter.textChanged.connect(self.draw)
-
+        self.clean_all_button.clicked.connect(self.clean_all)
 
         MainWindow.show()
 
@@ -171,9 +171,10 @@ class Ui_MainWindow(object):
 
                 Ex.append(x)
                 Ex1.append(x)
-                if (isinstance(lim, str)):
-                    Ey.append(float(x/100-e))
-                    Ey1.append(float(x/100)-e)
+
+                if ( not isinstance(lim, int) and not isinstance(lim, float) ):
+                    Ey.append(float(10-e))
+                    Ey1.append(float(10+e))
                 else:
                     try:
                         Ey.append(float(lim - e))
@@ -193,6 +194,12 @@ class Ui_MainWindow(object):
             self.graphicsView.plot(self.dataX, self.dataY, pen=(c, 3))
             self.graphicsView.plot(self.dataX, self.dataEy, pen=(3, 3))
             self.graphicsView.plot(self.dataX, self.dataEy1, pen=(3, 3))
+
+    def clean_all(self):
+        self.graphicsView.close()
+        self.graphicsView = pg.PlotWidget(self.centralwidget)
+        self.graphicsView.setObjectName("graphicsView")
+        self.verticalLayout.addWidget(self.graphicsView)
 
 if __name__ == "__main__":
     import sys
