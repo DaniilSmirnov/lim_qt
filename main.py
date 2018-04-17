@@ -125,6 +125,8 @@ class Ui_MainWindow(object):
         # self.graphicsView.setObjectName("graphicsView")
         # self.verticalLayout.addWidget(self.graphicsView)
 
+        global i
+
         function = self.function_enter.text()
         point = self.point_enter.text()
         e=float(self.epsilon_enter.text())
@@ -184,7 +186,6 @@ class Ui_MainWindow(object):
             self.graphicsView.plot(self.dataX, self.dataEy, pen=(3, 3))
             self.graphicsView.plot(self.dataX, self.dataEy1, pen=(3, 3))
 
-            global i
             i+=1
 
 
