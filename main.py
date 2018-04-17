@@ -9,7 +9,11 @@ from random import *
 import time
 
 
+# noinspection PyArgumentList
 class Ui_MainWindow(object):
+
+    i=0
+
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("Limit")
         MainWindow.resize(800, 600)
@@ -39,6 +43,11 @@ class Ui_MainWindow(object):
         self.point_enter = QtWidgets.QLineEdit(self.centralwidget)
         self.point_enter.setObjectName("lineEdit")
         self.verticalLayout.addWidget(self.point_enter)
+        self.horizontalLayout.addLayout(self.verticalLayout)
+
+        self.epsilon_enter = QtWidgets.QLineEdit(self.centralwidget)
+        self.epsilon_enter.setObjectName("lineEdit")
+        self.verticalLayout.addWidget(self.epsilon_enter)
         self.horizontalLayout.addLayout(self.verticalLayout)
 
         self.draw_epsilon_button = QtWidgets.QPushButton(self.centralwidget)
@@ -75,41 +84,15 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "Limit"))
         self.function_enter.setText(_translate("MainWindow", "2-4/(x*x)"))
         self.point_enter.setText(_translate("MainWindow", "oo"))
+        self.epsilon_enter.setText(_translate("MainWindow", "1"))
 
         self.function_enter.textChanged.connect(self.draw)
         self.point_enter.textChanged.connect(self.draw)
         self.clean_all_button.clicked.connect(self.clean_all)
-
         MainWindow.show()
-
-    def standart_plot(self):
-        chain = self.function_enter.text()
-
-        x = Symbol('x')
-
-        lim = limit(2 - 4 / (x * x), x, oo)
-        self.label.setText("lim = " + str(lim))
-
-        X = []
-        Y = []
-
-        x = 1
-
-        while x < 1000:
-            y = 2 - 4 / (x * x)
-            if (y > 0):
-                Y.append(y)
-                X.append(x)
-            x = x + 1
-
-        self.dataX = X
-        self.dataY = Y
-
-        self.graphicsView.setXRange(0, 100)
-        self.graphicsView.plot(self.dataX, self.dataY, pen=None, symbol='o')  # this line doesn't work
 
     def brackets_balance(self, s):
         meetings = 0
@@ -144,6 +127,8 @@ class Ui_MainWindow(object):
 
         function = self.function_enter.text()
         point = self.point_enter.text()
+        e=float(self.epsilon_enter.text())
+
 
         if ((self.brackets_balance(function) or self.brackets_check(function)) and self.func_check(function) and len(function) > 1):
 
@@ -162,7 +147,6 @@ class Ui_MainWindow(object):
             Ey = []
             Ex1 = []
             Ey1 = []
-            e = 1
 
             x = -1000
 
@@ -176,20 +160,17 @@ class Ui_MainWindow(object):
                 Ex.append(x)
                 Ex1.append(x)
 
-
-                if(str(lim) == 'oo' or str(lim)=='-oo' ):
+                if str(lim) == 'oo' or str(lim) == '-oo':
                     Ey.append(float(10 - e))
                     Ey1.append(float(10 + e))
                 else:
                     try:
                         Ey.append(float(float(lim) - e))
                         Ey1.append(float(float(lim) + e))
-                        if ((float(y) == float(lim - e)) or (float(y) == float(lim + e))):
+                        if (float(y) == float(lim - e)) or (float(y) == float(lim + e)):
                             self.delta.setText("y = " + str(y))
                     except TypeError:
-                        return 0;
-
-
+                        return 0
 
             self.dataX = X
             self.dataY = Y
@@ -197,13 +178,14 @@ class Ui_MainWindow(object):
             self.dataEy = Ey
             self.dataEy1 = Ey1
 
-
             self.graphicsView.setXRange(0, 100)
             c = randint(1, 10)
             self.graphicsView.plot(self.dataX, self.dataY, pen=(c, 3))
             self.graphicsView.plot(self.dataX, self.dataEy, pen=(3, 3))
             self.graphicsView.plot(self.dataX, self.dataEy1, pen=(3, 3))
 
+            global i
+            i+=1
 
 
     def clean_all(self):
