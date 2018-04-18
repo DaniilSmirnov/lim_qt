@@ -11,7 +11,6 @@ from random import *
 import time
 
 
-# noinspection PyArgumentList
 class Ui_MainWindow(object):
 
     i=0
@@ -68,7 +67,14 @@ class Ui_MainWindow(object):
         self.menubar = QMenuBar(MainWindow)
         self.menubar.setGeometry(QRect(0, 0, 662, 21))
         self.menubar.setObjectName("menubar")
+
+        self.limits_view = self.menubar.addMenu('Limits')
         MainWindow.setMenuBar(self.menubar)
+        self.limits_view.addAction(self.open_limits())
+
+        self.derivatives_view = self.menubar.addMenu('Derivatives')
+        MainWindow.setMenuBar(self.menubar)
+        self.derivatives_view.addAction(self.open_derivatives())
 
         self.statusbar = QStatusBar(MainWindow)
         self.statusbar.setObjectName("statusbar")
@@ -89,9 +95,27 @@ class Ui_MainWindow(object):
 
         self.function_enter.textChanged.connect(self.draw)
         self.point_enter.textChanged.connect(self.draw)
-        self.clean_all_button.clicked.connect(self.clean_all)
+        self.clean_all_button.clicked.connect(self.clean_all_functions)
         self.draw_epsilon_button.clicked.connect(self.draw_epsilon)
         MainWindow.show()
+
+    def clean_all(self):
+        self.label.close()
+        self.delta.close()
+        self.function_enter.close()
+        self.point_enter.close()
+        self.epsilon_enter.close()
+        self.draw_epsilon_button.close()
+        self.clean_all_button.close()
+        #self.graphicsView.close()
+
+    def open_limits(self):
+        print("kek")
+        #self.clean_all()
+
+    def open_derivatives(self):
+        print("kek")
+        #self.clean_all()
 
     def brackets_balance(self, s):
         meetings = 0
@@ -179,7 +203,7 @@ class Ui_MainWindow(object):
             while x < 1000:
 
                 Ex.append(x)
-                x +=100
+                x += 100
 
                 if str(lim) == 'oo' or str(lim) == '-oo':
                     Ey.append(float(10 - e))
@@ -200,11 +224,12 @@ class Ui_MainWindow(object):
             self.graphicsView.plot(self.dataEx, self.dataEy, pen=(3, 3))
             self.graphicsView.plot(self.dataEx, self.dataEy1, pen=(3, 3))
 
-    def clean_all(self):
+    def clean_all_functions(self):
         self.graphicsView.close()
         self.graphicsView = pg.PlotWidget(self.centralwidget)
         self.graphicsView.setObjectName("graphicsView")
         self.grid.addWidget(self.graphicsView, 4, 0, 5, 0)
+
 
 if __name__ == "__main__":
     import sys
