@@ -1,5 +1,7 @@
 import pyqtgraph as pg
-from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtGui import *
+from PyQt5.QtWidgets import *
+from PyQt5.QtCore import *
 import numpy as np
 import math
 from sympy import *
@@ -17,45 +19,46 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("Limit")
         MainWindow.resize(800, 600)
-        self.centralwidget = QtWidgets.QWidget(MainWindow)
+        self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
 
-        self.horizontalLayout = QtWidgets.QHBoxLayout(self.centralwidget)
+        self.horizontalLayout = QHBoxLayout(self.centralwidget)
         self.horizontalLayout.setObjectName("horizontalLayout")
 
-        self.verticalLayout = QtWidgets.QVBoxLayout()
+        self.verticalLayout = QVBoxLayout()
         self.verticalLayout.setObjectName("verticalLayout")
 
-        self.label = QtWidgets.QLabel(self.centralwidget)
+        self.label = QLabel(self.centralwidget)
         self.label.setObjectName("label")
         self.verticalLayout.addWidget(self.label)
+        self.label.setAlignment(Qt.AlignLeft)
 
-        self.delta = QtWidgets.QLabel(self.centralwidget)
+        self.delta = QLabel(self.centralwidget)
         self.delta.setObjectName("label")
         self.verticalLayout.addWidget(self.delta)
 
-        self.function_enter = QtWidgets.QLineEdit(self.centralwidget)
+        self.function_enter = QLineEdit(self.centralwidget)
         self.function_enter.setObjectName("lineEdit")
         self.verticalLayout.addWidget(self.function_enter)
         self.horizontalLayout.addLayout(self.verticalLayout)
         #self.horizontalLayout.addWidget(self.function_enter)
 
-        self.point_enter = QtWidgets.QLineEdit(self.centralwidget)
+        self.point_enter = QLineEdit(self.centralwidget)
         self.point_enter.setObjectName("lineEdit")
         self.verticalLayout.addWidget(self.point_enter)
         self.horizontalLayout.addLayout(self.verticalLayout)
 
-        self.epsilon_enter = QtWidgets.QLineEdit(self.centralwidget)
+        self.epsilon_enter = QLineEdit(self.centralwidget)
         self.epsilon_enter.setObjectName("lineEdit")
         self.verticalLayout.addWidget(self.epsilon_enter)
         self.horizontalLayout.addLayout(self.verticalLayout)
 
-        self.draw_epsilon_button = QtWidgets.QPushButton(self.centralwidget)
+        self.draw_epsilon_button = QPushButton(self.centralwidget)
         self.draw_epsilon_button.setObjectName("pushButton")
         self.verticalLayout.addWidget(self.draw_epsilon_button)
         self.horizontalLayout.addLayout(self.horizontalLayout)
 
-        self.clean_all_button = QtWidgets.QPushButton(self.centralwidget)
+        self.clean_all_button = QPushButton(self.centralwidget)
         self.clean_all_button.setObjectName("pushButton")
         self.verticalLayout.addWidget(self.clean_all_button)
         self.horizontalLayout.addLayout(self.horizontalLayout)
@@ -69,21 +72,21 @@ class Ui_MainWindow(object):
 
         MainWindow.setCentralWidget(self.centralwidget)
 
-        self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 662, 21))
+        self.menubar = QMenuBar(MainWindow)
+        self.menubar.setGeometry(QRect(0, 0, 662, 21))
         self.menubar.setObjectName("menubar")
         MainWindow.setMenuBar(self.menubar)
 
-        self.statusbar = QtWidgets.QStatusBar(MainWindow)
+        self.statusbar = QStatusBar(MainWindow)
         self.statusbar.setObjectName("statusbar")
 
         MainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(MainWindow)
-        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+        QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
-        _translate = QtCore.QCoreApplication.translate
+        _translate = QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "Limit"))
         self.function_enter.setText(_translate("MainWindow", "2-4/(x*x)"))
         self.point_enter.setText(_translate("MainWindow", "oo"))
@@ -198,8 +201,8 @@ class Ui_MainWindow(object):
 if __name__ == "__main__":
     import sys
 
-    app = QtWidgets.QApplication(sys.argv)
-    MainWindow = QtWidgets.QMainWindow()
+    app = QApplication(sys.argv)
+    MainWindow = QMainWindow()
     ui = Ui_MainWindow()
     ui.setupUi(MainWindow)
     MainWindow.show()
