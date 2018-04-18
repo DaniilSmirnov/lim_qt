@@ -31,7 +31,7 @@ class Ui_MainWindow(object):
         self.label = QLabel(self.centralwidget)
         self.label.setObjectName("label")
         self.verticalLayout.addWidget(self.label)
-        self.label.setAlignment(Qt.AlignLeft)
+        self.label.setAlignment(Qt.AlignLeft) #example for alloignment
 
         self.delta = QLabel(self.centralwidget)
         self.delta.setObjectName("label")
