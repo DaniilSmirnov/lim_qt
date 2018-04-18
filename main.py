@@ -50,11 +50,11 @@ class Ui_MainWindow(object):
 
         self.draw_epsilon_button = QPushButton(self.centralwidget)
         self.draw_epsilon_button.setObjectName("pushButton")
-        self.grid.addWidget(self.draw_epsilon_button, 3, 0)
+        self.grid.addWidget(self.draw_epsilon_button, 3, 1)
 
         self.clean_all_button = QPushButton(self.centralwidget)
         self.clean_all_button.setObjectName("pushButton")
-        self.grid.addWidget(self.clean_all_button, 3, 1)
+        self.grid.addWidget(self.clean_all_button, 3, 2)
 
 
         self.graphicsView = pg.PlotWidget(self.centralwidget)
@@ -81,13 +81,16 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "Limit"))
-        self.function_enter.setText(_translate("MainWindow", "2-4/(x*x)"))
+        self.function_enter.setText(_translate("MainWindow", "x"))
         self.point_enter.setText(_translate("MainWindow", "oo"))
         self.epsilon_enter.setText(_translate("MainWindow", "1"))
+        self.clean_all_button.setText(_translate("MainWindow","Clean all"))
+        self.draw_epsilon_button.setText(_translate("MainWindow", "Draw epsilon"))
 
         self.function_enter.textChanged.connect(self.draw)
         self.point_enter.textChanged.connect(self.draw)
         self.clean_all_button.clicked.connect(self.clean_all)
+        self.draw_epsilon_button.clicked.connect(self.draw_epsilon)
         MainWindow.show()
 
     def brackets_balance(self, s):
@@ -115,18 +118,11 @@ class Ui_MainWindow(object):
         return False
 
     def draw(self):
-        # self.graphicsView.close()
-
-        # self.graphicsView = pg.PlotWidget(self.centralwidget)
-        # self.graphicsView.setObjectName("graphicsView")
-        # self.verticalLayout.addWidget(self.graphicsView)
 
         global i
 
         function = self.function_enter.text()
         point = self.point_enter.text()
-        e=float(self.epsilon_enter.text())
-
 
         if (self.brackets_balance(function) or self.brackets_check(function)) and self.func_check(function):
 
@@ -141,22 +137,49 @@ class Ui_MainWindow(object):
 
             X = []
             Y = []
-            Ex = []
-            Ey = []
-            Ex1 = []
-            Ey1 = []
 
             x = -1000
 
             while x < 1000:
                 y = ne.evaluate(function)
-
                 Y.append(y)
                 X.append(x)
                 x += 1
 
+            self.dataX = X
+            self.dataY = Y
+
+            self.graphicsView.setXRange(0, 100)
+            c = randint(1, 10)
+            self.graphicsView.plot(self.dataX, self.dataY, pen=(c, 3))
+
+            i+=1
+
+    def draw_epsilon(self):
+
+        function = self.function_enter.text()
+        point = self.point_enter.text()
+        e = float(self.epsilon_enter.text())
+
+        Ex = []
+        Ey = []
+        Ey1 = []
+
+        if (self.brackets_balance(function) or self.brackets_check(function)) and self.func_check(function):
+
+            x = Symbol('x')
+
+            try:
+                lim = limit(function, x, point)
+            except BaseException:
+                return 0
+
+            x = -1000
+
+            while x < 1000:
+
                 Ex.append(x)
-                Ex1.append(x)
+                x +=100
 
                 if str(lim) == 'oo' or str(lim) == '-oo':
                     Ey.append(float(10 - e))
@@ -170,20 +193,12 @@ class Ui_MainWindow(object):
                     except TypeError:
                         return 0
 
-            self.dataX = X
-            self.dataY = Y
-            self.dataEx = X
+            self.dataEx = Ex
             self.dataEy = Ey
             self.dataEy1 = Ey1
 
-            self.graphicsView.setXRange(0, 100)
-            c = randint(1, 10)
-            self.graphicsView.plot(self.dataX, self.dataY, pen=(c, 3))
-            self.graphicsView.plot(self.dataX, self.dataEy, pen=(3, 3))
-            self.graphicsView.plot(self.dataX, self.dataEy1, pen=(3, 3))
-
-            i+=1
-
+            self.graphicsView.plot(self.dataEx, self.dataEy, pen=(3, 3))
+            self.graphicsView.plot(self.dataEx, self.dataEy1, pen=(3, 3))
 
     def clean_all(self):
         self.graphicsView.close()
