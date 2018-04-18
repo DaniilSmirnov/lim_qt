@@ -22,51 +22,44 @@ class Ui_MainWindow(object):
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
 
-        self.horizontalLayout = QHBoxLayout(self.centralwidget)
-        self.horizontalLayout.setObjectName("horizontalLayout")
-
-        self.verticalLayout = QVBoxLayout()
-        self.verticalLayout.setObjectName("verticalLayout")
+        grid = QGridLayout()
+        grid.setSpacing(10)
+        self.centralwidget.setLayout(grid)
 
         self.label = QLabel(self.centralwidget)
         self.label.setObjectName("label")
-        self.verticalLayout.addWidget(self.label)
-        self.label.setAlignment(Qt.AlignLeft) #example for alloignment
+        grid.addWidget(self.label,1,0)
 
         self.delta = QLabel(self.centralwidget)
         self.delta.setObjectName("label")
-        self.verticalLayout.addWidget(self.delta)
+        grid.addWidget(self.delta,1,1)
+
 
         self.function_enter = QLineEdit(self.centralwidget)
         self.function_enter.setObjectName("lineEdit")
-        self.verticalLayout.addWidget(self.function_enter)
-        self.horizontalLayout.addLayout(self.verticalLayout)
-        #self.horizontalLayout.addWidget(self.function_enter)
+        grid.addWidget(self.function_enter,2,0)
 
         self.point_enter = QLineEdit(self.centralwidget)
         self.point_enter.setObjectName("lineEdit")
-        self.verticalLayout.addWidget(self.point_enter)
-        self.horizontalLayout.addLayout(self.verticalLayout)
+        grid.addWidget(self.point_enter,2,1)
+
 
         self.epsilon_enter = QLineEdit(self.centralwidget)
         self.epsilon_enter.setObjectName("lineEdit")
-        self.verticalLayout.addWidget(self.epsilon_enter)
-        self.horizontalLayout.addLayout(self.verticalLayout)
+        grid.addWidget(self.epsilon_enter, 2, 2)
 
         self.draw_epsilon_button = QPushButton(self.centralwidget)
         self.draw_epsilon_button.setObjectName("pushButton")
-        self.verticalLayout.addWidget(self.draw_epsilon_button)
-        self.horizontalLayout.addLayout(self.horizontalLayout)
+        grid.addWidget(self.draw_epsilon_button, 3, 0)
 
         self.clean_all_button = QPushButton(self.centralwidget)
         self.clean_all_button.setObjectName("pushButton")
-        self.verticalLayout.addWidget(self.clean_all_button)
-        self.horizontalLayout.addLayout(self.horizontalLayout)
-        #self.horizontalLayout.addWidget(self.clean_all_button)
+        grid.addWidget(self.clean_all_button, 3, 1)
+
 
         self.graphicsView = pg.PlotWidget(self.centralwidget)
         self.graphicsView.setObjectName("graphicsView")
-        self.verticalLayout.addWidget(self.graphicsView)
+        grid.addWidget(self.graphicsView,4, 0,5,0)
 
         #self.standart_plot()
 
@@ -135,7 +128,7 @@ class Ui_MainWindow(object):
         e=float(self.epsilon_enter.text())
 
 
-        if ((self.brackets_balance(function) or self.brackets_check(function)) and self.func_check(function) and len(function) > 1):
+        if (self.brackets_balance(function) or self.brackets_check(function)) and self.func_check(function):
 
             x = Symbol('x')
 
