@@ -13,7 +13,7 @@ import time
 
 class Ui_MainWindow(object):
 
-    i=0
+    i = 0
 
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("Limit")
@@ -202,6 +202,7 @@ class Ui_MainWindow(object):
 
             while x < 1000:
 
+                y=ne.evaluate(function)
                 Ex.append(x)
                 x += 100
 
@@ -209,12 +210,11 @@ class Ui_MainWindow(object):
                     Ey.append(float(10 - e))
                     Ey1.append(float(10 + e))
                 else:
-                    try:
-                        Ey.append(float(float(lim) - e))
-                        Ey1.append(float(float(lim) + e))
-                        if (float(y) == float(lim - e)) or (float(y) == float(lim + e)):
-                            self.delta.setText("y = " + str(y))
-                    except TypeError:
+                    Ey.append(float(float(lim) - e))
+                    Ey1.append(float(float(lim) + e))
+                    if (float(y) == float(lim - e)) or (float(y) == float(lim + e)):
+                        self.delta.setText("y = " + str(y))
+
                         return 0
 
             self.dataEx = Ex
