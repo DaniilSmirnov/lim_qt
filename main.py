@@ -188,6 +188,7 @@ class Ui_MainWindow(object):
         Ex = []
         Ey = []
         Ey1 = []
+        Y=[]
 
         if (self.brackets_balance(function) or self.brackets_check(function)) and self.func_check(function):
 
@@ -204,7 +205,7 @@ class Ui_MainWindow(object):
 
                 y=ne.evaluate(function)
                 Ex.append(x)
-                x += 100
+                x += 1
 
                 if str(lim) == 'oo' or str(lim) == '-oo':
                     Ey.append(float(10 - e))
@@ -215,7 +216,6 @@ class Ui_MainWindow(object):
                     if (float(y) == float(lim - e)) or (float(y) == float(lim + e)):
                         self.delta.setText("y = " + str(y))
 
-                        return 0
 
             self.dataEx = Ex
             self.dataEy = Ey
