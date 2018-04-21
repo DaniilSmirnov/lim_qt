@@ -13,6 +13,8 @@ import time
 xdots = {}
 ydots = {}
 
+functions_list=[]
+
 i = 0
 
 amount = 5
@@ -68,6 +70,7 @@ class Ui_MainWindow(object):
         self.graphics = QComboBox(self.centralwidget)
         self.graphics.setObjectName("graphics")
         self.grid.addWidget(self.graphics,1,0)
+        self.graphics.addItem(" ")
 
         # self.standart_plot()
 
@@ -106,7 +109,15 @@ class Ui_MainWindow(object):
         self.clean_all_button.clicked.connect(self.clean_all_functions)
         self.draw_epsilon_button.clicked.connect(self.draw_epsilon)
         self.draw_save_button.clicked.connect(self.save,True)
+        self.graphics.activated[str].connect(self.setI)
+
         MainWindow.show()
+
+    def setI(self,text):
+        global i
+        i=functions_list.index(text)
+
+
 
     def clean_all(self):
         self.label.close()
@@ -123,6 +134,8 @@ class Ui_MainWindow(object):
         global i
 
         function = self.function_enter.text()
+
+        functions_list.append(str(function))
 
         self.graphics.addItem(str(function))
 
