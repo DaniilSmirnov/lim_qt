@@ -105,7 +105,7 @@ class Ui_MainWindow(object):
         self.point_enter.textChanged.connect(self.draw)
         self.clean_all_button.clicked.connect(self.clean_all_functions)
         self.draw_epsilon_button.clicked.connect(self.draw_epsilon)
-        self.draw_save_button.clicked.connect(self.save)
+        self.draw_save_button.clicked.connect(self.save,True)
         MainWindow.show()
 
     def clean_all(self):
@@ -124,7 +124,7 @@ class Ui_MainWindow(object):
 
         j=0
 
-        self.clean_all_functions()
+        self.clean_all_functions(False)
 
         for items in xdots:
 
@@ -256,10 +256,11 @@ class Ui_MainWindow(object):
             self.graphicsView.plot(self.dataEx, self.dataEy, pen=(3, 3))
             self.graphicsView.plot(self.dataEx, self.dataEy1, pen=(3, 3))
 
-    def clean_all_functions(self):
+    def clean_all_functions(self,exec):
 
-        xdots.clear()
-        ydots.clear()
+        if exec:
+            xdots.clear()
+            ydots.clear()
 
         self.graphicsView.close()
         self.graphicsView = pg.PlotWidget(self.centralwidget)
