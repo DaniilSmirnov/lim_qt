@@ -122,16 +122,14 @@ class Ui_MainWindow(object):
 
         global i
 
-        i=i+1
-
         j=0
 
         self.clean_all_functions()
 
-        while j < i:
+        for items in xdots:
 
-            self.dataX = xdots.get(j)
-            self.dataY = ydots.get(j)
+            self.dataX = xdots.get(str(items))
+            self.dataY = ydots.get(str(items))
 
             self.graphicsView.setXRange(0, 100)
             c = randint(1, 10)
@@ -139,6 +137,7 @@ class Ui_MainWindow(object):
 
             j=j+1
 
+        i = i + 1
         return 0
 
     def open_limits(self):
@@ -201,12 +200,12 @@ class Ui_MainWindow(object):
                 y = ne.evaluate(function)
                 Y.append(y)
                 X.append(x)
-                ydots.update({i: Y})
-                xdots.update({i: X})
+                ydots.update({str(i): Y})
+                xdots.update({str(i): X})
                 x += 1
 
-            self.dataX = xdots.get(i)
-            self.dataY = ydots.get(i)
+            self.dataX = xdots.get(str(i))
+            self.dataY = ydots.get(str(i))
 
             self.graphicsView.setXRange(0, 100)
             c = randint(1, 10)
@@ -258,6 +257,10 @@ class Ui_MainWindow(object):
             self.graphicsView.plot(self.dataEx, self.dataEy1, pen=(3, 3))
 
     def clean_all_functions(self):
+
+        xdots.clear()
+        ydots.clear()
+
         self.graphicsView.close()
         self.graphicsView = pg.PlotWidget(self.centralwidget)
         self.graphicsView.setObjectName("graphicsView")
