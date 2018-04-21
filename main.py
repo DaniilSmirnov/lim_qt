@@ -13,15 +13,11 @@ import time
 xdots = {}
 ydots = {}
 
+i = 0
+
+amount = 5
 
 class Ui_MainWindow(object):
-
-    i = 0
-
-    amount = 5
-
-    xdots.clear()
-    ydots.clear()
 
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("Limit")
@@ -122,8 +118,6 @@ class Ui_MainWindow(object):
 
         global i
 
-        j=0
-
         self.clean_all_functions(False)
 
         for items in xdots:
@@ -131,11 +125,10 @@ class Ui_MainWindow(object):
             self.dataX = xdots.get(str(items))
             self.dataY = ydots.get(str(items))
 
-            self.graphicsView.setXRange(0, 100)
+            self.graphicsView.setYRange(-10,10)
+            self.graphicsView.setXRange(-10,10)
             c = randint(1, 10)
             self.graphicsView.plot(self.dataX, self.dataY, pen=(c, 3))
-
-            j=j+1
 
         i = i + 1
         return 0
@@ -207,7 +200,8 @@ class Ui_MainWindow(object):
             self.dataX = xdots.get(str(i))
             self.dataY = ydots.get(str(i))
 
-            self.graphicsView.setXRange(0, 100)
+            self.graphicsView.setYRange(-10, 10)
+            self.graphicsView.setXRange(-10, 10)
             c = randint(1, 10)
             self.graphicsView.plot(self.dataX, self.dataY, pen=(c, 3))
 
