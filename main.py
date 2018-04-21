@@ -65,6 +65,10 @@ class Ui_MainWindow(object):
         self.graphicsView.setObjectName("graphicsView")
         self.grid.addWidget(self.graphicsView, 6, 0, 7, 0)
 
+        self.graphics = QComboBox(self.centralwidget)
+        self.graphics.setObjectName("graphics")
+        self.grid.addWidget(self.graphics,1,0)
+
         # self.standart_plot()
 
         MainWindow.setCentralWidget(self.centralwidget)
@@ -117,6 +121,10 @@ class Ui_MainWindow(object):
     def save(self):
 
         global i
+
+        function = self.function_enter.text()
+
+        self.graphics.addItem(str(function))
 
         self.clean_all_functions(False)
 
