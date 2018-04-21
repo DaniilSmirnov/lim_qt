@@ -13,9 +13,11 @@ import time
 xdots = {}
 ydots = {}
 
-functions_list=[]
+functions_list = []
 
 i = 0
+
+edit = false
 
 amount = 5
 
@@ -33,11 +35,11 @@ class Ui_MainWindow(object):
 
         self.label = QLabel(self.centralwidget)
         self.label.setObjectName("label")
-        self.grid.addWidget(self.label, 2, 0)
+        self.grid.addWidget(self.label, 1, 0)
 
         self.delta = QLabel(self.centralwidget)
         self.delta.setObjectName("label")
-        self.grid.addWidget(self.delta, 2, 1)
+        self.grid.addWidget(self.delta, 1, 1)
 
         self.function_enter = QLineEdit(self.centralwidget)
         self.function_enter.setObjectName("lineEdit")
@@ -69,7 +71,7 @@ class Ui_MainWindow(object):
 
         self.graphics = QComboBox(self.centralwidget)
         self.graphics.setObjectName("graphics")
-        self.grid.addWidget(self.graphics,1,0)
+        self.grid.addWidget(self.graphics,2,0)
         self.graphics.addItem(" ")
 
         # self.standart_plot()
@@ -114,10 +116,9 @@ class Ui_MainWindow(object):
         MainWindow.show()
 
     def setI(self,text):
-        global i
+        global i,edit
         i=functions_list.index(text)
-
-
+        edit=True
 
     def clean_all(self):
         self.label.close()
@@ -131,7 +132,7 @@ class Ui_MainWindow(object):
 
     def save(self):
 
-        global i
+        global i, edit
 
         function = self.function_enter.text()
 
@@ -150,6 +151,9 @@ class Ui_MainWindow(object):
             self.graphicsView.setXRange(-10,10)
             c = randint(1, 10)
             self.graphicsView.plot(self.dataX, self.dataY, pen=(c, 3))
+
+        if edit:
+            self.graphics.removeItem(functions_list[i])
 
         i = i + 1
         return 0
