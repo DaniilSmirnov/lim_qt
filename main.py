@@ -10,9 +10,18 @@ import numexpr as ne
 from random import *
 import time
 
+xdots = {}
+ydots = {}
+
+
 class Ui_MainWindow(object):
 
     i = 0
+
+    amount = 5
+
+    xdots.clear()
+    ydots.clear()
 
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("Limit")
@@ -26,24 +35,27 @@ class Ui_MainWindow(object):
 
         self.label = QLabel(self.centralwidget)
         self.label.setObjectName("label")
-        self.grid.addWidget(self.label,2,0)
+        self.grid.addWidget(self.label, 2, 0)
 
         self.delta = QLabel(self.centralwidget)
         self.delta.setObjectName("label")
-        self.grid.addWidget(self.delta,2,1)
+        self.grid.addWidget(self.delta, 2, 1)
 
         self.function_enter = QLineEdit(self.centralwidget)
         self.function_enter.setObjectName("lineEdit")
-        self.grid.addWidget(self.function_enter,3,0)
+        self.grid.addWidget(self.function_enter, 3, 0)
 
         self.point_enter = QLineEdit(self.centralwidget)
         self.point_enter.setObjectName("lineEdit")
-        self.grid.addWidget(self.point_enter,4,0)
-
+        self.grid.addWidget(self.point_enter, 4, 0)
 
         self.epsilon_enter = QLineEdit(self.centralwidget)
         self.epsilon_enter.setObjectName("lineEdit")
         self.grid.addWidget(self.epsilon_enter, 5, 0)
+
+        self.draw_save_button = QPushButton(self.centralwidget)
+        self.draw_save_button.setObjectName("pushButton")
+        self.grid.addWidget(self.draw_save_button, 3, 1)
 
         self.draw_epsilon_button = QPushButton(self.centralwidget)
         self.draw_epsilon_button.setObjectName("pushButton")
@@ -53,12 +65,11 @@ class Ui_MainWindow(object):
         self.clean_all_button.setObjectName("pushButton")
         self.grid.addWidget(self.clean_all_button, 4, 1)
 
-
         self.graphicsView = pg.PlotWidget(self.centralwidget)
         self.graphicsView.setObjectName("graphicsView")
-        self.grid.addWidget(self.graphicsView,6, 0,7,0)
+        self.grid.addWidget(self.graphicsView, 6, 0, 7, 0)
 
-        #self.standart_plot()
+        # self.standart_plot()
 
         MainWindow.setCentralWidget(self.centralwidget)
 
@@ -86,13 +97,15 @@ class Ui_MainWindow(object):
         self.function_enter.setText(_translate("MainWindow", "x"))
         self.point_enter.setText(_translate("MainWindow", "oo"))
         self.epsilon_enter.setText(_translate("MainWindow", "1"))
-        self.clean_all_button.setText(_translate("MainWindow","Clean all"))
+        self.clean_all_button.setText(_translate("MainWindow", "Clean all"))
         self.draw_epsilon_button.setText(_translate("MainWindow", "Draw epsilon"))
+        self.draw_save_button.setText(_translate("MainWindow", "Save"))
 
         self.function_enter.textChanged.connect(self.draw)
         self.point_enter.textChanged.connect(self.draw)
         self.clean_all_button.clicked.connect(self.clean_all_functions)
         self.draw_epsilon_button.clicked.connect(self.draw_epsilon)
+        self.draw_save_button.clicked.connect(self.save)
         MainWindow.show()
 
     def clean_all(self):
@@ -103,15 +116,38 @@ class Ui_MainWindow(object):
         self.epsilon_enter.close()
         self.draw_epsilon_button.close()
         self.clean_all_button.close()
-        #self.graphicsView.close()
+        # self.graphicsView.close()
+
+    def save(self):
+
+        global i
+
+        i=i+1
+
+        j=0
+
+        self.clean_all_functions()
+
+        while j < i:
+
+            self.dataX = xdots.get(j)
+            self.dataY = ydots.get(j)
+
+            self.graphicsView.setXRange(0, 100)
+            c = randint(1, 10)
+            self.graphicsView.plot(self.dataX, self.dataY, pen=(c, 3))
+
+            j=j+1
+
+        return 0
 
     def open_limits(self):
         print("kek")
-        #self.clean_all()
+        # self.clean_all()
 
     def open_derivatives(self):
         print("kek")
-        #self.clean_all()
+        # self.clean_all()
 
     def brackets_balance(self, s):
         meetings = 0
@@ -131,7 +167,7 @@ class Ui_MainWindow(object):
                 return False
         return True
 
-    def func_check(self,s):
+    def func_check(self, s):
         for c in s:
             if c == 'x' or c == 'y':
                 return True
@@ -141,8 +177,13 @@ class Ui_MainWindow(object):
 
         global i
 
+        # global xdots,ydots
+
         function = self.function_enter.text()
         point = self.point_enter.text()
+
+        X=[]
+        Y=[]
 
         if (self.brackets_balance(function) or self.brackets_check(function)) and self.func_check(function):
 
@@ -155,25 +196,21 @@ class Ui_MainWindow(object):
 
             self.label.setText("lim = " + str(lim))
 
-            X = []
-            Y = []
-
             x = -1000
-
             while x < 1000:
                 y = ne.evaluate(function)
                 Y.append(y)
                 X.append(x)
+                ydots.update({i: Y})
+                xdots.update({i: X})
                 x += 1
 
-            self.dataX = X
-            self.dataY = Y
+            self.dataX = xdots.get(i)
+            self.dataY = ydots.get(i)
 
             self.graphicsView.setXRange(0, 100)
             c = randint(1, 10)
             self.graphicsView.plot(self.dataX, self.dataY, pen=(c, 3))
-
-            i+=1
 
     def draw_epsilon(self):
 
@@ -185,7 +222,7 @@ class Ui_MainWindow(object):
         Ex = []
         Ey = []
         Ey1 = []
-        Y=[]
+        Y = []
 
         if (self.brackets_balance(function) or self.brackets_check(function)) and self.func_check(function):
 
@@ -200,7 +237,7 @@ class Ui_MainWindow(object):
 
             while x < 1000:
 
-                y=ne.evaluate(function)
+                y = ne.evaluate(function)
                 Ex.append(x)
                 x += 1
 
@@ -213,7 +250,6 @@ class Ui_MainWindow(object):
                     if (float(y) == float(lim - e)) or (float(y) == float(lim + e)):
                         self.delta.setText("y = " + str(y))
 
-
             self.dataEx = Ex
             self.dataEy = Ey
             self.dataEy1 = Ey1
@@ -225,7 +261,7 @@ class Ui_MainWindow(object):
         self.graphicsView.close()
         self.graphicsView = pg.PlotWidget(self.centralwidget)
         self.graphicsView.setObjectName("graphicsView")
-        self.grid.addWidget(self.graphicsView, 4, 0, 5, 0)
+        self.grid.addWidget(self.graphicsView, 6, 0, 7, 0)
 
 
 if __name__ == "__main__":
