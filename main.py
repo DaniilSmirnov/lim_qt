@@ -135,6 +135,17 @@ class Ui_MainWindow(object):
 
        j = functions_list.index(function_e)
        self.graphics.removeItem(j)
+       del xdots[str(j)]
+       del ydots[str(j)]
+
+       for items in xdots:
+         self.dataX = xdots.get(str(items))
+         self.dataY = ydots.get(str(items))
+
+         self.graphicsView.setYRange(-10, 10)
+         self.graphicsView.setXRange(-10, 10)
+         c = randint(1, 10)
+         self.graphicsView.plot(self.dataX, self.dataY, pen=(i, 3))
 
     def clean_all(self):
         self.label.close()
@@ -163,14 +174,17 @@ class Ui_MainWindow(object):
             self.dataX = xdots.get(str(items))
             self.dataY = ydots.get(str(items))
 
-            self.graphicsView.setYRange(-10,10)
-            self.graphicsView.setXRange(-10,10)
+            self.graphicsView.setYRange(-10, 10)
+            self.graphicsView.setXRange(-10, 10)
             c = randint(1, 10)
-            self.graphicsView.plot(self.dataX, self.dataY, pen=(c, 3))
+            self.graphicsView.plot(self.dataX, self.dataY, pen=(i, 3))
 
         if edit:
             j = functions_list.index(function_e)
             self.graphics.removeItem(j)
+            del xdots[str(j)]
+            del ydots[str(j)]
+
 
         i = i + 1
         return 0
