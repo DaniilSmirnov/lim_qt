@@ -19,6 +19,8 @@ i = 0
 
 edit = false
 
+function_e=""
+
 amount = 5
 
 class Ui_MainWindow(object):
@@ -53,17 +55,21 @@ class Ui_MainWindow(object):
         self.epsilon_enter.setObjectName("lineEdit")
         self.grid.addWidget(self.epsilon_enter, 5, 0)
 
-        self.draw_save_button = QPushButton(self.centralwidget)
-        self.draw_save_button.setObjectName("pushButton")
-        self.grid.addWidget(self.draw_save_button, 3, 1)
+        self.save_button = QPushButton(self.centralwidget)
+        self.save_button.setObjectName("pushButton")
+        self.grid.addWidget(self.save_button, 3, 1)
 
-        self.draw_epsilon_button = QPushButton(self.centralwidget)
-        self.draw_epsilon_button.setObjectName("pushButton")
-        self.grid.addWidget(self.draw_epsilon_button, 5, 1)
+        self.epsilon_button = QPushButton(self.centralwidget)
+        self.epsilon_button.setObjectName("pushButton")
+        self.grid.addWidget(self.epsilon_button, 5, 1)
 
         self.clean_all_button = QPushButton(self.centralwidget)
         self.clean_all_button.setObjectName("pushButton")
         self.grid.addWidget(self.clean_all_button, 4, 1)
+
+        self.delete_button=QPushButton(self.centralwidget)
+        self.delete_button.setObjectName("pushButton")
+        self.grid.addWidget(self.delete_button,2,1)
 
         self.graphicsView = pg.PlotWidget(self.centralwidget)
         self.graphicsView.setObjectName("graphicsView")
@@ -103,22 +109,31 @@ class Ui_MainWindow(object):
         self.point_enter.setText(_translate("MainWindow", "oo"))
         self.epsilon_enter.setText(_translate("MainWindow", "1"))
         self.clean_all_button.setText(_translate("MainWindow", "Clean all"))
-        self.draw_epsilon_button.setText(_translate("MainWindow", "Draw epsilon"))
-        self.draw_save_button.setText(_translate("MainWindow", "Save"))
+        self.epsilon_button.setText(_translate("MainWindow", "Draw epsilon"))
+        self.save_button.setText(_translate("MainWindow", "Save"))
+        self.delete_button.setText(_translate("MainWindow", "Delete"))
 
         self.function_enter.textChanged.connect(self.draw)
         self.point_enter.textChanged.connect(self.draw)
-        self.clean_all_button.clicked.connect(self.clean_all_functions)
-        self.draw_epsilon_button.clicked.connect(self.draw_epsilon)
-        self.draw_save_button.clicked.connect(self.save,True)
+        self.clean_all_button.clicked.connect(self.clean_all_functions,True)
+        self.epsilon_button.clicked.connect(self.draw_epsilon)
+        self.save_button.clicked.connect(self.save)
         self.graphics.activated[str].connect(self.setI)
+        self.delete_button.clicked.connect(self.delete)
 
         MainWindow.show()
 
+    def delete(self):
+       global function_e
+
+       j = functions_list.index(function_e)
+       self.graphics.removeItem(functions_list[j])
+
     def setI(self,text):
-        global i,edit
+        global i,edit,function_e
         i=functions_list.index(text)
         edit=True
+        function_e=text
 
     def clean_all(self):
         self.label.close()
@@ -126,9 +141,9 @@ class Ui_MainWindow(object):
         self.function_enter.close()
         self.point_enter.close()
         self.epsilon_enter.close()
-        self.draw_epsilon_button.close()
+        self.epsilon_button.close()
         self.clean_all_button.close()
-        # self.graphicsView.close()
+        self.graphicsView.close()
 
     def save(self):
 
@@ -153,7 +168,8 @@ class Ui_MainWindow(object):
             self.graphicsView.plot(self.dataX, self.dataY, pen=(c, 3))
 
         if edit:
-            self.graphics.removeItem(functions_list[i])
+            j = functions_list.index(function_e)
+            self.graphics.removeItem(functions_list[j])
 
         i = i + 1
         return 0
