@@ -143,10 +143,12 @@ class Ui_MainWindow(object):
     def delete(self):
        global function_e
 
+       global i
+
        j = functions_list.index(function_e)
-       self.graphics.removeItem(j)
-       del xdots[str(j)]
-       del ydots[str(j)]
+       self.graphics.removeItem(i+1)
+       del xdots[str(i)]
+       del ydots[str(i)]
 
        for items in xdots:
          self.dataX = xdots.get(str(items))
