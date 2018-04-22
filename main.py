@@ -19,9 +19,10 @@ i = 0
 
 edit = false
 
-function_e=""
+function_e = " "
 
 amount = 5
+
 
 class Ui_MainWindow(object):
 
@@ -123,17 +124,17 @@ class Ui_MainWindow(object):
 
         MainWindow.show()
 
-    def delete(self):
-       global function_e
-
-       j = functions_list.index(function_e)
-       self.graphics.removeItem(functions_list[j])
-
-    def setI(self,text):
+    def setI(self, text):
         global i,edit,function_e
         i=functions_list.index(text)
         edit=True
         function_e=text
+
+    def delete(self):
+       global function_e
+
+       j = functions_list.index(function_e)
+       self.graphics.removeItem(j)
 
     def clean_all(self):
         self.label.close()
@@ -169,7 +170,7 @@ class Ui_MainWindow(object):
 
         if edit:
             j = functions_list.index(function_e)
-            self.graphics.removeItem(functions_list[j])
+            self.graphics.removeItem(j)
 
         i = i + 1
         return 0
