@@ -1,14 +1,10 @@
+from random import *
+import numexpr as ne
 import pyqtgraph as pg
-from PyQt5.QtGui import *
-from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
-import numpy as np
-import math
+from PyQt5.QtWidgets import *
 from sympy import *
 from sympy.abc import *
-import numexpr as ne
-from random import *
-import time
 
 xdots = {}
 ydots = {}
@@ -90,10 +86,21 @@ class Ui_MainWindow(object):
         self.menubar.setObjectName("menubar")
 
         self.limits_view = self.menubar.addMenu('Limits')
+        limits_action=QAction(MainWindow)
+        limits_action.triggered.connect(self.open_limits)
+        self.limits_view.addAction(limits_action)
+
         MainWindow.setMenuBar(self.menubar)
 
         self.derivatives_view = self.menubar.addMenu('Derivatives')
-        MainWindow.setMenuBar(self.menubar)
+        derivatives_action = QAction(MainWindow)
+        derivatives_action.triggered.connect(self.open_derivatives)
+        self.derivatives_view.addAction(derivatives_action)
+
+        self.instructions_view = self.menubar.addMenu('Instructions')
+        #instructions_action= QAction(MainWindow)
+        #instructions_action.triggered.connect()
+
 
         self.statusbar = QStatusBar(MainWindow)
         self.statusbar.setObjectName("statusbar")
@@ -191,7 +198,7 @@ class Ui_MainWindow(object):
 
     def open_limits(self):
         print("kek")
-        # self.clean_all()
+        #self.clean_all()
 
     def open_derivatives(self):
         print("kek")
