@@ -311,6 +311,11 @@ class Ui_MainWindow(object):
             except BaseException:
                 return 0
 
+            lim = str(lim)
+
+            if lim[0] == '<':
+                lim = " Not exist"
+
             self.label.setText("lim = " + str(lim))
 
             x = -1000
@@ -350,6 +355,12 @@ class Ui_MainWindow(object):
                 lim = limit(function, x, point)
             except BaseException:
                 return 0
+
+            lim = str(lim)
+
+            if lim[0] == '<':
+                return 0
+
 
             x = -1000
 
