@@ -20,7 +20,8 @@ function_e = " "
 
 amount = 5
 
-instructions='** - to power \n sqrt - to square root \n'
+instructions='  **     to power \n ' \
+             ' sqrt   to square root \n' \
 
 
 class Ui_MainWindow(object):
