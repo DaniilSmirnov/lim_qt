@@ -20,7 +20,7 @@ function_e = " "
 
 amount = 5
 
-instructions='** to power \n sqrt to square root \n'
+instructions='** - to power \n sqrt - to square root \n'
 
 class Ui_MainWindow(object):
 
@@ -203,7 +203,6 @@ class Ui_MainWindow(object):
         return 0
 
     def open_limits(self):
-        #print("kek")
         self.clean_all()
 
         self.label = QLabel(self.centralwidget)
@@ -254,8 +253,12 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
 
     def open_derivatives(self):
-        print("kek")
-        # self.clean_all()
+        self.clean_all()
+
+        self.rofl = QLabel(self.centralwidget)
+        self.rofl.setObjectName("label")
+        self.grid.addWidget(self.rofl, 1, 0)
+        self.rofl.setText("За эту часть отвечает Иван Скворцов")
 
     def open_instructions(self):
 
@@ -372,7 +375,7 @@ class Ui_MainWindow(object):
             self.graphicsView.plot(self.dataEx, self.dataEy, pen=(3, 3))
             self.graphicsView.plot(self.dataEx, self.dataEy1, pen=(3, 3))
 
-    def clean_all_functions(self,exec):
+    def clean_all_functions(self, exec):
 
         if exec:
             xdots.clear()
