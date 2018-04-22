@@ -22,6 +22,7 @@ amount = 5
 
 instructions='** - to power \n sqrt - to square root \n'
 
+
 class Ui_MainWindow(object):
 
     def setupUi(self, MainWindow):
@@ -34,9 +35,9 @@ class Ui_MainWindow(object):
         self.grid.setSpacing(1)
         self.centralwidget.setLayout(self.grid)
 
-        self.label = QLabel(self.centralwidget)
-        self.label.setObjectName("label")
-        self.grid.addWidget(self.label, 1, 0)
+        self.result = QLabel(self.centralwidget)
+        self.result.setObjectName("label")
+        self.grid.addWidget(self.result, 1, 0)
 
         self.delta = QLabel(self.centralwidget)
         self.delta.setObjectName("label")
@@ -68,7 +69,7 @@ class Ui_MainWindow(object):
 
         self.delete_button=QPushButton(self.centralwidget)
         self.delete_button.setObjectName("pushButton")
-        self.grid.addWidget(self.delete_button,2,1)
+        self.grid.addWidget(self.delete_button, 2, 1)
 
         self.graphicsView = pg.PlotWidget(self.centralwidget)
         self.graphicsView.setObjectName("graphicsView")
@@ -76,10 +77,8 @@ class Ui_MainWindow(object):
 
         self.graphics = QComboBox(self.centralwidget)
         self.graphics.setObjectName("graphics")
-        self.grid.addWidget(self.graphics,2,0)
+        self.grid.addWidget(self.graphics, 2, 0)
         self.graphics.addItem(" ")
-
-        # self.standart_plot()
 
         MainWindow.setCentralWidget(self.centralwidget)
 
@@ -157,18 +156,19 @@ class Ui_MainWindow(object):
          c = randint(1, 10)
          self.graphicsView.plot(self.dataX, self.dataY, pen=(i, 3))
 
-    def clean_all(self):
-        self.label.close()
-        self.delta.close()
-        self.function_enter.close()
-        self.point_enter.close()
-        self.epsilon_enter.close()
-        self.epsilon_button.close()
-        self.clean_all_button.close()
-        self.graphicsView.close()
-        self.save_button.close()
-        self.delete_button.close()
-        self.graphics.close()
+    def clean_all(self,exec):
+        if exec == 1:
+            self.result.close()
+            self.delta.close()
+            self.function_enter.close()
+            self.point_enter.close()
+            self.epsilon_enter.close()
+            self.epsilon_button.close()
+            self.clean_all_button.close()
+            self.graphicsView.close()
+            self.save_button.close()
+            self.delete_button.close()
+            self.graphics.close()
 
     def save(self):
 
@@ -205,9 +205,9 @@ class Ui_MainWindow(object):
     def open_limits(self):
         self.clean_all()
 
-        self.label = QLabel(self.centralwidget)
-        self.label.setObjectName("label")
-        self.grid.addWidget(self.label, 1, 0)
+        self.result = QLabel(self.centralwidget)
+        self.result.setObjectName("label")
+        self.grid.addWidget(self.result, 1, 0)
 
         self.delta = QLabel(self.centralwidget)
         self.delta.setObjectName("label")
@@ -253,7 +253,7 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
 
     def open_derivatives(self):
-        self.clean_all()
+        self.clean_all(1)
 
         self.rofl = QLabel(self.centralwidget)
         self.rofl.setObjectName("label")
@@ -316,7 +316,7 @@ class Ui_MainWindow(object):
             if lim[0] == '<':
                 lim = " Not exist"
 
-            self.label.setText("lim = " + str(lim))
+            self.result.setText("lim = " + str(lim))
 
             x = -1000
             while x < 1000:
