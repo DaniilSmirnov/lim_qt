@@ -158,15 +158,17 @@ class Ui_MainWindow(object):
          self.graphicsView.plot(self.dataX, self.dataY, pen=(i, 3))
 
     def clean_all(self):
-        #self.label.close()
+        self.label.close()
         self.delta.close()
-        #self.function_enter.close()
+        self.function_enter.close()
         self.point_enter.close()
         self.epsilon_enter.close()
         self.epsilon_button.close()
-        #self.clean_all_button.close()
-        #self.graphicsView.close()
-        #self.save_button.close()
+        self.clean_all_button.close()
+        self.graphicsView.close()
+        self.save_button.close()
+        self.delete_button.close()
+        self.graphics.close()
 
     def save(self):
 
@@ -201,8 +203,55 @@ class Ui_MainWindow(object):
         return 0
 
     def open_limits(self):
-        print("kek")
-        #self.clean_all()
+        #print("kek")
+        self.clean_all()
+
+        self.label = QLabel(self.centralwidget)
+        self.label.setObjectName("label")
+        self.grid.addWidget(self.label, 1, 0)
+
+        self.delta = QLabel(self.centralwidget)
+        self.delta.setObjectName("label")
+        self.grid.addWidget(self.delta, 1, 1)
+
+        self.function_enter = QLineEdit(self.centralwidget)
+        self.function_enter.setObjectName("lineEdit")
+        self.grid.addWidget(self.function_enter, 3, 0)
+
+        self.point_enter = QLineEdit(self.centralwidget)
+        self.point_enter.setObjectName("lineEdit")
+        self.grid.addWidget(self.point_enter, 4, 0)
+
+        self.epsilon_enter = QLineEdit(self.centralwidget)
+        self.epsilon_enter.setObjectName("lineEdit")
+        self.grid.addWidget(self.epsilon_enter, 5, 0)
+
+        self.save_button = QPushButton(self.centralwidget)
+        self.save_button.setObjectName("pushButton")
+        self.grid.addWidget(self.save_button, 3, 1)
+
+        self.epsilon_button = QPushButton(self.centralwidget)
+        self.epsilon_button.setObjectName("pushButton")
+        self.grid.addWidget(self.epsilon_button, 5, 1)
+
+        self.clean_all_button = QPushButton(self.centralwidget)
+        self.clean_all_button.setObjectName("pushButton")
+        self.grid.addWidget(self.clean_all_button, 4, 1)
+
+        self.delete_button = QPushButton(self.centralwidget)
+        self.delete_button.setObjectName("pushButton")
+        self.grid.addWidget(self.delete_button, 2, 1)
+
+        self.graphicsView = pg.PlotWidget(self.centralwidget)
+        self.graphicsView.setObjectName("graphicsView")
+        self.grid.addWidget(self.graphicsView, 6, 0, 7, 0)
+
+        self.graphics = QComboBox(self.centralwidget)
+        self.graphics.setObjectName("graphics")
+        self.grid.addWidget(self.graphics, 2, 0)
+        self.graphics.addItem(" ")
+
+        self.retranslateUi(MainWindow)
 
     def open_derivatives(self):
         print("kek")
@@ -213,7 +262,6 @@ class Ui_MainWindow(object):
         global instructions
 
         alert(text=instructions, title='Instructions', button='OK')
-
 
     def brackets_balance(self, s):
         meetings = 0
