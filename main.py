@@ -5,6 +5,7 @@ from PyQt5.QtCore import *
 from PyQt5.QtWidgets import *
 from sympy import *
 from sympy.abc import *
+from pymsgbox import *
 
 xdots = {}
 ydots = {}
@@ -19,6 +20,7 @@ function_e = " "
 
 amount = 5
 
+instructions='** to power \n sqrt to square root \n'
 
 class Ui_MainWindow(object):
 
@@ -98,8 +100,9 @@ class Ui_MainWindow(object):
         self.derivatives_view.addAction(derivatives_action)
 
         self.instructions_view = self.menubar.addMenu('Instructions')
-        #instructions_action= QAction(MainWindow)
-        #instructions_action.triggered.connect()
+        instructions_action= QAction(MainWindow)
+        instructions_action.triggered.connect(self.open_instructions)
+        self.instructions_view.addAction(instructions_action)
 
 
         self.statusbar = QStatusBar(MainWindow)
@@ -155,14 +158,15 @@ class Ui_MainWindow(object):
          self.graphicsView.plot(self.dataX, self.dataY, pen=(i, 3))
 
     def clean_all(self):
-        self.label.close()
+        #self.label.close()
         self.delta.close()
-        self.function_enter.close()
+        #self.function_enter.close()
         self.point_enter.close()
         self.epsilon_enter.close()
         self.epsilon_button.close()
-        self.clean_all_button.close()
-        self.graphicsView.close()
+        #self.clean_all_button.close()
+        #self.graphicsView.close()
+        #self.save_button.close()
 
     def save(self):
 
@@ -203,6 +207,13 @@ class Ui_MainWindow(object):
     def open_derivatives(self):
         print("kek")
         # self.clean_all()
+
+    def open_instructions(self):
+
+        global instructions
+
+        alert(text=instructions, title='Instructions', button='OK')
+
 
     def brackets_balance(self, s):
         meetings = 0
