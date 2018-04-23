@@ -10,6 +10,10 @@ from pymsgbox import *
 xdots = {}
 ydots = {}
 
+exdots ={}
+eydots = {}
+ey1dots = {}
+
 functions_list = []
 
 i = 0
@@ -141,23 +145,24 @@ class Ui_MainWindow(object):
         function_e=text
 
     def delete(self):
-       global function_e
 
-       global i
+        global function_e
 
-       j = functions_list.index(function_e)
-       self.graphics.removeItem(i+1)
-       del xdots[str(i)]
-       del ydots[str(i)]
+        global i
 
-       for items in xdots:
-         self.dataX = xdots.get(str(items))
-         self.dataY = ydots.get(str(items))
+        j = functions_list.index(function_e)
+        self.graphics.removeItem(i+1)
+        del xdots[str(i)]
+        del ydots[str(i)]
 
-         self.graphicsView.setYRange(-10, 10)
-         self.graphicsView.setXRange(-10, 10)
-         c = randint(1, 10)
-         self.graphicsView.plot(self.dataX, self.dataY, pen=(i, 3))
+        for items in xdots:
+          self.dataX = xdots.get(str(items))
+          self.dataY = ydots.get(str(items))
+
+          self.graphicsView.setYRange(-10, 10)
+          self.graphicsView.setXRange(-10, 10)
+          c = randint(1, 10)
+          self.graphicsView.plot(self.dataX, self.dataY, pen=(i, 3))
 
     def clean_all(self,exec):
         if exec == 1:
@@ -382,9 +387,13 @@ class Ui_MainWindow(object):
                     if (float(y) == float(lim - e)) or (float(y) == float(lim + e)):
                         self.delta.setText("y = " + str(y))
 
-            self.dataEx = Ex
-            self.dataEy = Ey
-            self.dataEy1 = Ey1
+                exdots.update({str(i): Ex})
+                eydots.update({str(i): Ey})
+                ey1dots.update({str(i): Ey1})
+
+            self.dataEx = exdots.get(str(i))
+            self.dataEy = eydots.get(str(i))
+            self.dataEy1 = ey1dots.get(str(i))
 
             self.graphicsView.plot(self.dataEx, self.dataEy, pen=(3, 3))
             self.graphicsView.plot(self.dataEx, self.dataEy1, pen=(3, 3))
