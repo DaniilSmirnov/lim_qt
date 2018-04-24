@@ -265,17 +265,17 @@ class Ui_MainWindow(object):
         self.function_enter = QLineEdit(self.centralwidget)
         self.function_enter.setObjectName("lineEdit")
         self.grid.addWidget(self.function_enter, 1, 0)
-        self.function_enter.textChanged.connect(self.draw_der)
+        self.function_enter.textChanged.connect(self.draw)
 
         self.delta_enter = QLineEdit(self.centralwidget)
         self.delta_enter.setObjectName("lineEdit")
         self.grid.addWidget(self.delta_enter, 1, 1)
 
-
         self.draw_tangent = QPushButton(self.centralwidget)
         self.draw_tangent.setObjectName("pushButton")
         self.grid.addWidget(self.draw_tangent, 2, 0)
         self.draw_tangent.setText("Tangent")
+        self.draw_tangent.clicked.connect(self.drawtan)
 
         self.draw_additional = QPushButton(self.centralwidget)
         self.draw_additional.setObjectName("pushButton")
@@ -290,50 +290,6 @@ class Ui_MainWindow(object):
         self.graphicsView = pg.PlotWidget(self.centralwidget)
         self.graphicsView.setObjectName("graphicsView")
         self.grid.addWidget(self.graphicsView, 3, 0, 7, 0)
-
-    def draw_der(self):
-        global i
-
-        # global xdots,ydots
-
-        function = self.function_enter.text()
-        point = self.point_enter.text()
-
-        X = []
-        Y = []
-
-        if (self.brackets_balance(function) or self.brackets_check(function)) and self.func_check(function):
-
-            x = Symbol('x')
-
-            try:
-                dif = diff(function, x)
-            except BaseException:
-                return 0
-
-            diff = str(diff)
-
-            if lim[0] == '<':
-                lim = " Not exist"
-
-            #self.result.setText("lim = " + str(lim))
-
-            x = -1000
-            while x < 1000:
-                y = ne.evaluate(function)
-                Y.append(y)
-                X.append(x)
-                ydots.update({str(i): Y})
-                xdots.update({str(i): X})
-                x += 1
-
-            self.dataX = xdots.get(str(i))
-            self.dataY = ydots.get(str(i))
-
-            self.graphicsView.setYRange(-10, 10)
-            self.graphicsView.setXRange(-10, 10)
-            c = randint(1, 10)
-            self.graphicsView.plot(self.dataX, self.dataY, pen=(c, 3))
 
     def open_instructions(self):
 
@@ -409,6 +365,9 @@ class Ui_MainWindow(object):
             self.graphicsView.setXRange(-10, 10)
             c = randint(1, 10)
             self.graphicsView.plot(self.dataX, self.dataY, pen=(c, 3))
+
+    def drawtan(self):
+        print("kek")
 
     def draw_epsilon(self):
 
