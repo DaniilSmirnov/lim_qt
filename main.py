@@ -10,9 +10,12 @@ from pymsgbox import *
 xdots = {}
 ydots = {}
 
-exdots ={}
+exdots = {}
 eydots = {}
 ey1dots = {}
+
+tanxdots = {}
+tanydots = {}
 
 functions_list = []
 
@@ -176,6 +179,13 @@ class Ui_MainWindow(object):
             self.save_button.close()
             self.delete_button.close()
             self.graphics.close()
+        if exec == 0:
+            self.graphicsView.close()
+            self.draw_df.close()
+            self.draw_tangent.close()
+            self.draw_additional.close()
+            self.delta_enter.close()
+            self.function_enter.close()
 
     def save(self):
 
@@ -210,7 +220,7 @@ class Ui_MainWindow(object):
         return 0
 
     def open_limits(self):
-        self.clean_all()
+        self.clean_all(0)
 
         self.result = QLabel(self.centralwidget)
         self.result.setObjectName("label")
@@ -260,6 +270,11 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
 
     def open_derivatives(self):
+
+        global i
+
+        i = 0
+
         self.clean_all(1)
 
         self.function_enter = QLineEdit(self.centralwidget)
@@ -367,7 +382,45 @@ class Ui_MainWindow(object):
             self.graphicsView.plot(self.dataX, self.dataY, pen=(c, 3))
 
     def drawtan(self):
-        print("kek")
+
+        global i
+
+        function = self.function_enter.text()
+        point = self.point_enter.text()
+
+        X = []
+        Y = []
+
+        if (self.brackets_balance(function) or self.brackets_check(function)) and self.func_check(function):
+
+            x = Symbol('x')
+
+            try:
+                function = diff(function,x)
+            except BaseException:
+                return 0
+
+            function = str(function) + "*x"
+
+            x = -1000
+            while x < 1000:
+                y = ne.evaluate(function)
+                Y.append(y)
+                X.append(x)
+                tanydots.update({str(i): Y})
+                tanxdots.update({str(i): X})
+                x += 1
+
+            self.dataX = tanxdots.get(str(i))
+            self.dataY = tanydots.get(str(i))
+
+            self.graphicsView.setYRange(-10, 10)
+            self.graphicsView.setXRange(-10, 10)
+            c = randint(1, 10)
+            self.graphicsView.plot(self.dataX, self.dataY, pen=(c, 3))
+
+    def drawdiff(self):
+        print("1")
 
     def draw_epsilon(self):
 
