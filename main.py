@@ -386,7 +386,7 @@ class Ui_MainWindow(object):
         global i
 
         function = self.function_enter.text()
-        point = self.point_enter.text()
+        point = self.delta_enter.text()
 
         X = []
         Y = []
@@ -396,13 +396,20 @@ class Ui_MainWindow(object):
             x = Symbol('x')
 
             try:
-                function = diff(function,x)
+                dif = str(diff(function,x))
             except BaseException:
                 return 0
 
-            function = str(function) + "*x"
+            x = int(point)
+
+            dif = ne.evaluate(dif)
+
+            fx0 =  ne.evaluate(function)
+
+            function = str(fx0)+"+"+str(dif)+"*"+ "(" + "x" + "-" + str(point) + ")"
 
             x = -1000
+
             while x < 1000:
                 y = ne.evaluate(function)
                 Y.append(y)
