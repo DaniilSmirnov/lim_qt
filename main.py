@@ -134,18 +134,18 @@ class Ui_MainWindow(object):
         self.function_enter.setText(_translate("MainWindow", "x"))
         self.point_enter.setText(_translate("MainWindow", "oo"))
         self.epsilon_enter.setText(_translate("MainWindow", "1"))
-        self.clean_all_button.setText(_translate("MainWindow", "Clean all"))
         self.epsilon_button.setText(_translate("MainWindow", "Draw epsilon"))
         self.save_button.setText(_translate("MainWindow", "Save"))
         self.delete_button.setText(_translate("MainWindow", "Delete"))
+        self.clean_all_button.setText(_translate("MainWindow", "Clean all"))
 
         self.function_enter.textChanged.connect(self.draw)
         self.point_enter.textChanged.connect(self.draw)
-        self.clean_all_button.clicked.connect(self.clean_all_functions,True)
         self.epsilon_button.clicked.connect(self.draw_epsilon)
         self.save_button.clicked.connect(self.save)
         self.graphics.activated[str].connect(self.setI)
         self.delete_button.clicked.connect(self.delete)
+        self.clean_all_button.clicked.connect(self.clean_all_functions, True)
 
         MainWindow.show()
 
@@ -195,6 +195,11 @@ class Ui_MainWindow(object):
             self.draw_additional.close()
             self.delta_enter.close()
             self.function_enter.close()
+            self.point_enter.close()
+            self.save_button.close()
+            self.delete_button.close()
+            self.graphics.close()
+            self.clean_all_button.close()
 
     def save(self):
 
@@ -318,9 +323,35 @@ class Ui_MainWindow(object):
         self.draw_df.setText("df")
         self.draw_df.clicked.connect(self.drawdiff)
 
+        self.save_button = QPushButton(self.centralwidget)
+        self.save_button.setObjectName("pushButton")
+        self.grid.addWidget(self.save_button, 3, 0)
+
+        self.clean_all_button = QPushButton(self.centralwidget)
+        self.clean_all_button.setObjectName("pushButton")
+        self.grid.addWidget(self.clean_all_button, 3, 1)
+
+        self.delete_button = QPushButton(self.centralwidget)
+        self.delete_button.setObjectName("pushButton")
+        self.grid.addWidget(self.delete_button, 3, 2)
+
+        self.graphics = QComboBox(self.centralwidget)
+        self.graphics.setObjectName("graphics")
+        self.grid.addWidget(self.graphics, 4, 0)
+        self.graphics.addItem(" ")
+
         self.graphicsView = pg.PlotWidget(self.centralwidget)
         self.graphicsView.setObjectName("graphicsView")
-        self.grid.addWidget(self.graphicsView, 3, 0, 7, 0)
+        self.grid.addWidget(self.graphicsView, 5, 0, 7, 0)
+
+        self.save_button.clicked.connect(self.save)
+        self.graphics.activated[str].connect(self.setI)
+        self.delete_button.clicked.connect(self.delete)
+        self.clean_all_button.clicked.connect(self.clean_all_functions, True)
+
+        self.save_button.setText(_translate("MainWindow", "Save"))
+        self.delete_button.setText(_translate("MainWindow", "Delete"))
+        self.clean_all_button.setText(_translate("MainWindow", "Clean all"))
 
     def open_instructions(self):
 
