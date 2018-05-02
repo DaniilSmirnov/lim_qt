@@ -349,9 +349,9 @@ class Ui_MainWindow(object):
         self.delete_button.clicked.connect(self.delete)
         self.clean_all_button.clicked.connect(self.clean_all_functions, True)
 
-        self.save_button.setText(_translate("MainWindow", "Save"))
-        self.delete_button.setText(_translate("MainWindow", "Delete"))
-        self.clean_all_button.setText(_translate("MainWindow", "Clean all"))
+        self.save_button.setText("Save")
+        self.delete_button.setText("Delete")
+        self.clean_all_button.setText("Clean all")
 
     def open_instructions(self):
 
@@ -611,7 +611,6 @@ class Ui_MainWindow(object):
         self.graphicsView = pg.PlotWidget(self.centralwidget)
         self.graphicsView.setObjectName("graphicsView")
         self.grid.addWidget(self.graphicsView, 6, 0, 7, 0)
-
 
 if __name__ == "__main__":
     import sys
