@@ -1,3 +1,6 @@
+#TODO:Пофиксить баг удаления и редактирования
+#TODO:Добавить обработку исключений во все функции кроме draw,delete(уже есть)
+
 from random import *
 import numexpr as ne
 import pyqtgraph as pg
@@ -159,24 +162,27 @@ class Ui_MainWindow(object):
         function_e=text
 
     def delete(self):
+        try:
+            global function_e
 
-        global function_e
+            global i
 
-        global i
+            j = functions_list.index(function_e)
+            self.graphics.removeItem(i+1)
+            del xdots[str(i)]
+            del ydots[str(i)]
 
-        j = functions_list.index(function_e)
-        self.graphics.removeItem(i+1)
-        del xdots[str(i)]
-        del ydots[str(i)]
+            for items in xdots:
+                self.dataX = xdots.get(str(items))
+                self.dataY = ydots.get(str(items))
 
-        for items in xdots:
-          self.dataX = xdots.get(str(items))
-          self.dataY = ydots.get(str(items))
-
-          self.graphicsView.setYRange(-10, 10)
-          self.graphicsView.setXRange(-10, 10)
-          c = randint(1, 10)
-          self.graphicsView.plot(self.dataX, self.dataY, pen=(i, 3))
+            self.graphicsView.setYRange(-10, 10)
+            self.graphicsView.setXRange(-10, 10)
+            c = randint(1, 10)
+            self.graphicsView.plot(self.dataX, self.dataY, pen=(i, 3))
+        except BaseException:
+            alert(text='Error in delete \n Please contact dev', title='Error', button='OK')
+            return 0
 
     def clean_all(self,exec):
         if exec == 1:
@@ -206,33 +212,33 @@ class Ui_MainWindow(object):
 
     def save(self):
 
-        global i, edit
+        try:
+            global i, edit
 
-        function = self.function_enter.text()
+            function = self.function_enter.text()
+            functions_list.append(str(function))
+            self.graphics.addItem(str(function))
+            self.clean_all_functions(False)
 
-        functions_list.append(str(function))
+            for items in xdots:
 
-        self.graphics.addItem(str(function))
+                self.dataX = xdots.get(str(items))
+                self.dataY = ydots.get(str(items))
 
-        self.clean_all_functions(False)
+                self.graphicsView.setYRange(-10, 10)
+                self.graphicsView.setXRange(-10, 10)
+                self.graphicsView.plot(self.dataX, self.dataY, pen=(colors[int(items)], 3))
 
-        for items in xdots:
+            if edit:
+                j = functions_list.index(function_e)
+                self.graphics.removeItem(j)
+                del xdots[str(j)]
+                del ydots[str(j)]
 
-            self.dataX = xdots.get(str(items))
-            self.dataY = ydots.get(str(items))
-
-            self.graphicsView.setYRange(-10, 10)
-            self.graphicsView.setXRange(-10, 10)
-            self.graphicsView.plot(self.dataX, self.dataY, pen=(colors[int(items)], 3))
-
-        if edit:
-            j = functions_list.index(function_e)
-            self.graphics.removeItem(j)
-            del xdots[str(j)]
-            del ydots[str(j)]
-
-        i = i + 1
-        return 0
+            i = i + 1
+        except BaseException:
+            alert(text='Error in save \n Please contact dev', title='Error', button='OK')
+            return 0
 
     def open_limits(self):
         self.clean_all(0)
@@ -435,6 +441,7 @@ class Ui_MainWindow(object):
             return 0
 
     def drawtan(self):
+
 
         global i
 
