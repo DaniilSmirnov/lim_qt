@@ -386,47 +386,53 @@ class Ui_MainWindow(object):
 
     def draw(self):
 
-        global i
+        try:
 
-        function = self.function_enter.text()
-        point = self.point_enter.text()
+            global i
 
-        X=[]
-        Y=[]
+            function = self.function_enter.text()
+            point = self.point_enter.text()
 
-        if (self.brackets_balance(function) or self.brackets_check(function)) and self.func_check(function):
+            X=[]
+            Y=[]
 
-            x = Symbol('x')
+            if (self.brackets_balance(function) or self.brackets_check(function)) and self.func_check(function):
 
-            try:
-                lim = limit(function, x, point)
-            except BaseException:
-                return 0
+                x = Symbol('x')
 
-            lim = str(lim)
+                try:
+                    lim = limit(function, x, point)
+                except BaseException:
+                    return 0
 
-            if lim[0] == '<':
-                lim = " Not exist"
+                lim = str(lim)
 
-            self.result.setText("lim = " + str(lim))
+                if lim[0] == '<':
+                    lim = " Not exist"
 
-            x = -1000
-            while x < 1000:
-                y = ne.evaluate(function)
-                Y.append(y)
-                X.append(x)
-                ydots.update({str(i): Y})
-                xdots.update({str(i): X})
-                x += 1
+                self.result.setText("lim = " + str(lim))
 
-            self.dataX = xdots.get(str(i))
-            self.dataY = ydots.get(str(i))
+                x = -1000
+                while x < 1000:
+                    y = ne.evaluate(function)
+                    Y.append(y)
+                    X.append(x)
+                    ydots.update({str(i): Y})
+                    xdots.update({str(i): X})
+                    x += 1
 
-            self.graphicsView.setYRange(-10, 10)
-            self.graphicsView.setXRange(-10, 10)
-            c = randint(1, 10)
-            colors.append(c)
-            self.graphicsView.plot(self.dataX, self.dataY, pen=(colors[i], 3))
+                self.dataX = xdots.get(str(i))
+                self.dataY = ydots.get(str(i))
+
+                self.graphicsView.setYRange(-10, 10)
+                self.graphicsView.setXRange(-10, 10)
+                c = randint(1, 10)
+                colors.append(c)
+                self.graphicsView.plot(self.dataX, self.dataY, pen=(colors[i], 3))
+        except BaseException:
+            self.result.setText("Error")
+            alert(text='Error in draw module \n Please check function enter', title='Error', button='OK')
+            return 0
 
     def drawtan(self):
 
@@ -613,6 +619,7 @@ class Ui_MainWindow(object):
         self.graphicsView = pg.PlotWidget(self.centralwidget)
         self.graphicsView.setObjectName("graphicsView")
         self.grid.addWidget(self.graphicsView, 6, 0, 7, 0)
+
 
 if __name__ == "__main__":
     import sys
