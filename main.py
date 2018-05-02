@@ -164,11 +164,11 @@ class Ui_MainWindow(object):
     def delete(self):
         try:
             global function_e
-
             global i
 
             j = functions_list.index(function_e)
             self.graphics.removeItem(i+1)
+
             del xdots[str(i)]
             del ydots[str(i)]
 
@@ -176,10 +176,10 @@ class Ui_MainWindow(object):
                 self.dataX = xdots.get(str(items))
                 self.dataY = ydots.get(str(items))
 
-            self.graphicsView.setYRange(-10, 10)
+                self.graphicsView.plot(self.dataX, self.dataY, pen=(colors[int(items)], 3))
+
             self.graphicsView.setXRange(-10, 10)
-            c = randint(1, 10)
-            self.graphicsView.plot(self.dataX, self.dataY, pen=(i, 3))
+            self.graphicsView.setYRange(-10, 10)
         except BaseException:
             alert(text='Error in delete \n Please contact dev', title='Error', button='OK')
             return 0
@@ -220,22 +220,27 @@ class Ui_MainWindow(object):
             self.graphics.addItem(str(function))
             self.clean_all_functions(False)
 
+            i += 1
+
+            if edit:
+                j = functions_list.index(function_e)
+                self.graphics.removeItem(str(function_e))
+                del xdots[str(j)]
+                del ydots[str(j)]
+
+                i -= 1
+
             for items in xdots:
 
                 self.dataX = xdots.get(str(items))
                 self.dataY = ydots.get(str(items))
 
-                self.graphicsView.setYRange(-10, 10)
-                self.graphicsView.setXRange(-10, 10)
                 self.graphicsView.plot(self.dataX, self.dataY, pen=(colors[int(items)], 3))
 
-            if edit:
-                j = functions_list.index(function_e)
-                self.graphics.removeItem(j)
-                del xdots[str(j)]
-                del ydots[str(j)]
+            self.graphicsView.setXRange(-10, 10)
+            self.graphicsView.setYRange(-10, 10)
 
-            i = i + 1
+
         except BaseException:
             alert(text='Error in save \n Please contact dev', title='Error', button='OK')
             return 0
@@ -323,6 +328,7 @@ class Ui_MainWindow(object):
         self.draw_additional.setObjectName("pushButton")
         self.grid.addWidget(self.draw_additional, 2, 1)
         self.draw_additional.setText("Additional")
+        self.draw_additional.clicked.connect(self.drawtan)
 
         self.draw_df = QPushButton(self.centralwidget)
         self.draw_df.setObjectName("pushButton")
@@ -441,7 +447,6 @@ class Ui_MainWindow(object):
             return 0
 
     def drawtan(self):
-
 
         global i
 
