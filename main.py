@@ -17,6 +17,15 @@ ey1dots = {}
 tanxdots = {}
 tanydots = {}
 
+diffxp = {}
+diffyp = {}
+
+diffdxp = {}
+diffdyp = {}
+
+diffdxpv = {} #вертикальная линия приращения
+diffdypv = {}
+
 functions_list = []
 
 i = 0
@@ -282,9 +291,15 @@ class Ui_MainWindow(object):
         self.grid.addWidget(self.function_enter, 1, 0)
         self.function_enter.textChanged.connect(self.draw)
 
+        self.point_enter = QLineEdit(self.centralwidget)
+        self.point_enter.setObjectName("lineEdit")
+        self.grid.addWidget(self.point_enter, 1, 1)
+        self.point_enter.textChanged.connect(self.draw)
+
         self.delta_enter = QLineEdit(self.centralwidget)
         self.delta_enter.setObjectName("lineEdit")
-        self.grid.addWidget(self.delta_enter, 1, 1)
+        self.grid.addWidget(self.delta_enter, 1, 2)
+        self.delta_enter.textChanged.connect(self.draw)
 
         self.draw_tangent = QPushButton(self.centralwidget)
         self.draw_tangent.setObjectName("pushButton")
@@ -301,6 +316,7 @@ class Ui_MainWindow(object):
         self.draw_df.setObjectName("pushButton")
         self.grid.addWidget(self.draw_df, 2, 2)
         self.draw_df.setText("df")
+        self.draw_df.clicked.connect(self.drawdiff)
 
         self.graphicsView = pg.PlotWidget(self.centralwidget)
         self.graphicsView.setObjectName("graphicsView")
@@ -339,8 +355,6 @@ class Ui_MainWindow(object):
     def draw(self):
 
         global i
-
-        # global xdots,ydots
 
         function = self.function_enter.text()
         point = self.point_enter.text()
@@ -386,7 +400,7 @@ class Ui_MainWindow(object):
         global i
 
         function = self.function_enter.text()
-        point = self.delta_enter.text()
+        point = self.point_enter.text()
 
         X = []
         Y = []
@@ -427,7 +441,79 @@ class Ui_MainWindow(object):
             self.graphicsView.plot(self.dataX, self.dataY, pen=(c, 3))
 
     def drawdiff(self):
-        print("1")
+
+        global i
+
+        point = self.point_enter.text()
+        function = self.function_enter.text()
+        delta_point = self.delta_enter.text()
+
+        X = []
+        Y = []
+
+        y = -1000
+
+        while y < 1000:
+
+            Y.append(y)
+            X.append(int(point))
+            diffyp.update({str(i): Y})
+            diffxp.update({str(i): X})
+            y += 1
+
+        self.dataX = diffxp.get(str(i))
+        self.dataY = diffyp.get(str(i))
+
+        self.graphicsView.setYRange(-10, 10)
+        self.graphicsView.setXRange(-10, 10)
+        c = randint(1, 10)
+
+        self.graphicsView.plot(self.dataX, self.dataY, pen=(c, 3))
+
+        X = []
+        Y = []
+
+        x=int(point)
+        y=ne.evaluate(function)
+
+        x = -1000
+
+        while x < 1000:
+            Y.append(y)
+            X.append(x)
+            diffdyp.update({str(i): Y})
+            diffdxp.update({str(i): X})
+            x += 1
+
+        self.dataX = diffdxp.get(str(i))
+        self.dataY = diffdyp.get(str(i))
+
+        self.graphicsView.setYRange(-10, 10)
+        self.graphicsView.setXRange(-10, 10)
+        c = randint(1, 10)
+
+        self.graphicsView.plot(self.dataX, self.dataY, pen=(c, 3))
+
+        X = []
+        Y = []
+
+        y = -1000
+
+        while y < 1000:
+            Y.append(y)
+            X.append(int(point)+int(delta_point))
+            diffdypv.update({str(i): Y})
+            diffdxpv.update({str(i): X})
+            y += 1
+
+        self.dataX = diffdxpv.get(str(i))
+        self.dataY = diffdypv.get(str(i))
+
+        self.graphicsView.setYRange(-10, 10)
+        self.graphicsView.setXRange(-10, 10)
+        c = randint(1, 10)
+
+        self.graphicsView.plot(self.dataX, self.dataY, pen=(c, 3))
 
     def draw_epsilon(self):
 
