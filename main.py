@@ -28,6 +28,8 @@ diffdypv = {}
 
 functions_list = []
 
+colors = []
+
 i = 0
 
 edit = false
@@ -38,6 +40,7 @@ amount = 5
 
 instructions='  **     to power \n ' \
              ' sqrt   to square root \n' \
+
 
 
 class Ui_MainWindow(object):
@@ -220,15 +223,13 @@ class Ui_MainWindow(object):
 
             self.graphicsView.setYRange(-10, 10)
             self.graphicsView.setXRange(-10, 10)
-            c = randint(1, 10)
-            self.graphicsView.plot(self.dataX, self.dataY, pen=(i, 3))
+            self.graphicsView.plot(self.dataX, self.dataY, pen=(colors[int(items)], 3))
 
         if edit:
             j = functions_list.index(function_e)
             self.graphics.removeItem(j)
             del xdots[str(j)]
             del ydots[str(j)]
-
 
         i = i + 1
         return 0
@@ -424,7 +425,8 @@ class Ui_MainWindow(object):
             self.graphicsView.setYRange(-10, 10)
             self.graphicsView.setXRange(-10, 10)
             c = randint(1, 10)
-            self.graphicsView.plot(self.dataX, self.dataY, pen=(c, 3))
+            colors.append(c)
+            self.graphicsView.plot(self.dataX, self.dataY, pen=(colors[i], 3))
 
     def drawtan(self):
 
