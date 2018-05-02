@@ -213,7 +213,7 @@ class Ui_MainWindow(object):
     def save(self):
 
         try:
-            global i, edit
+            global i, edit, function_e
 
             function = self.function_enter.text()
             functions_list.append(str(function))
