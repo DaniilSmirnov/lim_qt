@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="9e354d6b-c4ba-453c-99ff-d971e8482344" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -15,15 +16,15 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/lim_qt$Unnamed.coverage" NAME="Unnamed Coverage Results" MODIFIED="1525329311644" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/lim_qt$Unnamed.coverage" NAME="Unnamed Coverage Results" MODIFIED="1525329882238" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="main.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="710">
-              <caret line="247" selection-start-line="247" selection-end-line="247" />
+            <state relative-caret-position="41">
+              <caret line="212" column="19" selection-start-line="212" selection-start-column="19" selection-end-line="212" selection-end-column="19" />
               <folding>
                 <element signature="e#751#4064#0" />
                 <element signature="e#4115#5162#0" />
@@ -477,7 +478,14 @@
       <option name="project" value="LOCAL" />
       <updated>1525288987655</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="кнопка удаления работает( с багами)&#10;редактирование работает ( с багами)&#10;Баг в отрисовке графика модуля 2">
+      <created>1525329411843</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1525329411843</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -489,7 +497,7 @@
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Python Console" order="7" weight="0.3286385" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49633968" weight="0.1940532" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49633968" visible="true" weight="0.1940532" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info content_ui="combo" id="Project" order="0" weight="0.17423134" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
@@ -518,7 +526,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Fix" />
     <MESSAGE value="Начато добавление возможности редактирования графиков" />
     <MESSAGE value="Реализовано редактирование, но с багом ( остается старая метка)" />
     <MESSAGE value="редактирование не работает(убрать 155.156 строки и заработает, но не совсем так как нужно)" />
@@ -543,7 +550,8 @@
     <MESSAGE value="кнопка удаления и редактирования работает, но с ошибками&#10;(Не перерисовываются графики, не удаляется последний пункт)&#10;Баг в отрисовке графика модуля 2&#10;Цвет сохраняется для каждого графика&#10;Реализована обработка исключений в функциях save и delete" />
     <MESSAGE value="кнопка удаления работает&#10;редактирование не работает, тупо вылет&#10;Баг в отрисовке графика модуля 2" />
     <MESSAGE value="кнопка удаления работает( с багами)&#10;редактирование не работает, тупо вылет&#10;Баг в отрисовке графика модуля 2" />
-    <option name="LAST_COMMIT_MESSAGE" value="кнопка удаления работает( с багами)&#10;редактирование не работает, тупо вылет&#10;Баг в отрисовке графика модуля 2" />
+    <MESSAGE value="кнопка удаления работает( с багами)&#10;редактирование работает ( с багами)&#10;Баг в отрисовке графика модуля 2" />
+    <option name="LAST_COMMIT_MESSAGE" value="кнопка удаления работает( с багами)&#10;редактирование работает ( с багами)&#10;Баг в отрисовке графика модуля 2" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1250,8 +1258,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="710">
-          <caret line="247" selection-start-line="247" selection-end-line="247" />
+        <state relative-caret-position="41">
+          <caret line="212" column="19" selection-start-line="212" selection-start-column="19" selection-end-line="212" selection-end-column="19" />
           <folding>
             <element signature="e#751#4064#0" />
             <element signature="e#4115#5162#0" />

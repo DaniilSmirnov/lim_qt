@@ -172,6 +172,8 @@ class Ui_MainWindow(object):
             del xdots[str(i)]
             del ydots[str(i)]
 
+            self.clean_all_functions(False)
+
             for items in xdots:
                 self.dataX = xdots.get(str(items))
                 self.dataY = ydots.get(str(items))
@@ -211,7 +213,6 @@ class Ui_MainWindow(object):
             self.clean_all_button.close()
 
     def save(self):
-
         try:
             global i, edit, function_e
 
