@@ -224,7 +224,7 @@ class Ui_MainWindow(object):
 
             if edit:
                 j = functions_list.index(function_e)
-                self.graphics.removeItem(str(function_e))
+                self.graphics.removeItem(j+1)
                 del xdots[str(j)]
                 del ydots[str(j)]
 
