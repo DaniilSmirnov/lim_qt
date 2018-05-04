@@ -111,6 +111,7 @@ class Ui_MainWindow(object):
 
         self.limits_view = self.menubar.addMenu('Limits')
         limits_action=QAction(MainWindow)
+        limits_action.setText("Open")
         limits_action.triggered.connect(self.open_limits)
         self.limits_view.addAction(limits_action)
 
@@ -118,11 +119,13 @@ class Ui_MainWindow(object):
 
         self.derivatives_view = self.menubar.addMenu('Derivatives')
         derivatives_action = QAction(MainWindow)
+        derivatives_action.setText("Open")
         derivatives_action.triggered.connect(self.open_derivatives)
         self.derivatives_view.addAction(derivatives_action)
 
         self.instructions_view = self.menubar.addMenu('Instructions')
         instructions_action= QAction(MainWindow)
+        instructions_action.setText("Open")
         instructions_action.triggered.connect(self.open_instructions)
         self.instructions_view.addAction(instructions_action)
 
