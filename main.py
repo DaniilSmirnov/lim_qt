@@ -147,6 +147,8 @@ class Ui_MainWindow(object):
         self.save_button.setText(_translate("MainWindow", "Save"))
         self.delete_button.setText(_translate("MainWindow", "Delete"))
         self.clean_all_button.setText(_translate("MainWindow", "Clean all"))
+        self.delta.setText(_translate("MainWindow", " "))
+
 
         self.function_enter.textChanged.connect(self.draw)
         self.point_enter.textChanged.connect(self.draw)
@@ -253,7 +255,6 @@ class Ui_MainWindow(object):
 
         self.limits_view.setEnabled(False)
         self.derivatives_view.setEnabled(True)
-
 
         self.clean_all(0)
 
@@ -619,7 +620,7 @@ class Ui_MainWindow(object):
                 else:
                     Ey.append(float(float(lim) - e))
                     Ey1.append(float(float(lim) + e))
-                    if (float(y) == float(lim - e)) or (float(y) == float(lim + e)):
+                    if y == float(float(lim) - e) or y == float(float(lim) + e):
                         self.delta.setText("y = " + str(y))
 
                 exdots.update({str(i): Ex})
