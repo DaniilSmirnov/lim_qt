@@ -1,5 +1,4 @@
 #TODO:Пофиксить редактирование
-#TODO:Добавить обработку исключений во все функции кроме draw,delete,save(уже есть)
 
 from random import *
 import numexpr as ne
@@ -114,6 +113,7 @@ class Ui_MainWindow(object):
         limits_action.setText("Open")
         limits_action.triggered.connect(self.open_limits)
         self.limits_view.addAction(limits_action)
+        self.limits_view.setEnabled(False)
 
         MainWindow.setMenuBar(self.menubar)
 
@@ -250,6 +250,11 @@ class Ui_MainWindow(object):
             return 0
 
     def open_limits(self):
+
+        self.limits_view.setEnabled(False)
+        self.derivatives_view.setEnabled(True)
+
+
         self.clean_all(0)
 
         self.result = QLabel(self.centralwidget)
@@ -306,6 +311,9 @@ class Ui_MainWindow(object):
         i = 0
 
         self.clean_all(1)
+
+        self.derivatives_view.setEnabled(False)
+        self.limits_view.setEnabled(True)
 
         self.function_enter = QLineEdit(self.centralwidget)
         self.function_enter.setObjectName("lineEdit")
