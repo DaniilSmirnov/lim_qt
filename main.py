@@ -32,7 +32,11 @@ functions_list = []
 
 colors = []
 
+area = 100
+
 i = 0
+
+step = 0.01 #0.45
 
 edit = false
 
@@ -242,6 +246,8 @@ class Ui_MainWindow(object):
                 self.dataY = ydots.get(str(items))
 
                 self.graphicsView.plot(self.dataX, self.dataY, pen=(colors[int(items)], 3))
+                self.graphicsView.setXRange(-10, 10)
+                self.graphicsView.setYRange(-10, 10)
 
             self.graphicsView.setXRange(-10, 10)
             self.graphicsView.setYRange(-10, 10)
@@ -418,8 +424,8 @@ class Ui_MainWindow(object):
             function = self.function_enter.text()
             point = self.point_enter.text()
 
-            X=[]
-            Y=[]
+            X = []
+            Y = []
 
             if (self.brackets_balance(function) or self.brackets_check(function)) and self.func_check(function):
 
@@ -437,14 +443,16 @@ class Ui_MainWindow(object):
 
                 self.result.setText("lim = " + str(lim))
 
-                x = -1000
-                while x < 1000:
+                x = -area
+                while x < area:
                     y = ne.evaluate(function)
+                    #if int(y) > 100 or int(y) < -100:
+                       # continue
                     Y.append(y)
                     X.append(x)
                     ydots.update({str(i): Y})
                     xdots.update({str(i): X})
-                    x += 1
+                    x += step
 
                 self.dataX = xdots.get(str(i))
                 self.dataY = ydots.get(str(i))
@@ -486,15 +494,15 @@ class Ui_MainWindow(object):
 
             function = str(fx0)+"+"+str(dif)+"*"+ "(" + "x" + "-" + str(point) + ")"
 
-            x = -1000
+            x = -area
 
-            while x < 1000:
+            while x < area:
                 y = ne.evaluate(function)
                 Y.append(y)
                 X.append(x)
                 tanydots.update({str(i): Y})
                 tanxdots.update({str(i): X})
-                x += 1
+                x += step
 
             self.dataX = tanxdots.get(str(i))
             self.dataY = tanydots.get(str(i))
@@ -515,15 +523,15 @@ class Ui_MainWindow(object):
         X = []
         Y = []
 
-        y = -1000
+        y = -area
 
-        while y < 1000:
+        while y < area:
 
             Y.append(y)
             X.append(int(point))
             diffyp.update({str(i): Y})
             diffxp.update({str(i): X})
-            y += 1
+            y += step
 
         self.dataX = diffxp.get(str(i))
         self.dataY = diffyp.get(str(i))
@@ -540,14 +548,14 @@ class Ui_MainWindow(object):
         x=int(point)
         y=ne.evaluate(function)
 
-        x = -1000
+        x = -area
 
-        while x < 1000:
+        while x < area:
             Y.append(y)
             X.append(x)
             diffdyp.update({str(i): Y})
             diffdxp.update({str(i): X})
-            x += 1
+            x += step
 
         self.dataX = diffdxp.get(str(i))
         self.dataY = diffdyp.get(str(i))
@@ -561,14 +569,14 @@ class Ui_MainWindow(object):
         X = []
         Y = []
 
-        y = -1000
+        y = -area
 
-        while y < 1000:
+        while y < area:
             Y.append(y)
             X.append(int(point)+int(delta_point))
             diffdypv.update({str(i): Y})
             diffdxpv.update({str(i): X})
-            y += 1
+            y += step
 
         self.dataX = diffdxpv.get(str(i))
         self.dataY = diffdypv.get(str(i))
@@ -606,13 +614,13 @@ class Ui_MainWindow(object):
                 return 0
 
 
-            x = -1000
+            x = -area
 
-            while x < 1000:
+            while x < area:
 
                 y = ne.evaluate(function)
                 Ex.append(x)
-                x += 1
+                x += step
 
                 if str(lim) == 'oo' or str(lim) == '-oo':
                     Ey.append(float(10 - e))
