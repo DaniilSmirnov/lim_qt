@@ -16,15 +16,15 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/lim_qt$Unnamed.coverage" NAME="Unnamed Coverage Results" MODIFIED="1527438051688" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/lim_qt$Unnamed.coverage" NAME="Unnamed Coverage Results" MODIFIED="1527529363680" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="main.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="382">
-              <caret line="454" column="32" selection-start-line="454" selection-start-column="32" selection-end-line="454" selection-end-column="32" />
+            <state relative-caret-position="376">
+              <caret line="466" column="52" selection-start-line="466" selection-start-column="52" selection-end-line="466" selection-end-column="52" />
             </state>
           </provider>
         </entry>
@@ -71,7 +71,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../itogovaya" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
   </component>
   <component name="RunDashboard">
@@ -136,13 +136,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1522328886146</updated>
-    </task>
-    <task id="LOCAL-00005" summary="реализован ввод эпсилона&#10;сделана небольшая очистка кода от мусора и ненужных пустых строк">
-      <created>1523966920204</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1523966920204</updated>
     </task>
     <task id="LOCAL-00006" summary="переподключены библиотеки qt. Начато прописывание alligment">
       <created>1524053342575</created>
@@ -480,19 +473,25 @@
       <option name="project" value="LOCAL" />
       <updated>1527249418544</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="Кривая обработка гипербол, но обработка">
+      <created>1527438244332</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1527438244333</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5043924" side_tool="true" weight="0.3114241" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Python Console" order="7" weight="0.3286385" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49633968" visible="true" weight="0.1940532" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49633968" weight="0.1940532" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info content_ui="combo" id="Project" order="0" weight="0.17423134" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
@@ -521,7 +520,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="редактирование работает, но с ошибками&#10;кнопка удаления работает, но с ошибками&#10;Начато добавление кнопок перехода между модулями" />
     <MESSAGE value="редактирование работает, но с ошибками&#10;кнопка удаления работает, но с ошибками&#10;Начато добавление кнопок перехода между модулями&#10;Реализованы инструкции, но через tkinter" />
     <MESSAGE value="редактирование работает, но с ошибками&#10;кнопка удаления работает, но с ошибками&#10;Добавлен переход в модуль 1&#10;Реализованы инструкции, но через tkinter" />
     <MESSAGE value="редактирование работает&#10;кнопка удаления работает, но с ошибками&#10;Добавлен переход в модуль 1 и в модуль 2&#10;Модуль 2 не реализован&#10;Реализованы инструкции, но через tkinter" />
@@ -546,7 +544,8 @@
     <MESSAGE value="редактирование работает ( с багами)&#10;Баг с удалением(Если удалить, потом не сейвит)&#10;Баг в отрисовке графика модуля 2&#10;Добавлена надпись Open в переходах" />
     <MESSAGE value="Косяки с сохранением&#10;Немного визуальных украшательств" />
     <MESSAGE value="Надо решить вопрос с гиперболой" />
-    <option name="LAST_COMMIT_MESSAGE" value="Надо решить вопрос с гиперболой" />
+    <MESSAGE value="Кривая обработка гипербол, но обработка" />
+    <option name="LAST_COMMIT_MESSAGE" value="Кривая обработка гипербол, но обработка" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -575,6 +574,20 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="10914">
+          <caret line="642" column="17" selection-start-line="642" selection-start-column="17" selection-end-line="642" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="10676">
+          <caret line="635" column="59" lean-forward="true" selection-start-line="635" selection-start-column="59" selection-end-line="635" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="7888">
@@ -906,8 +919,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="382">
-          <caret line="454" column="32" selection-start-line="454" selection-start-column="32" selection-end-line="454" selection-end-column="32" />
+        <state relative-caret-position="376">
+          <caret line="466" column="52" selection-start-line="466" selection-start-column="52" selection-end-line="466" selection-end-column="52" />
         </state>
       </provider>
     </entry>

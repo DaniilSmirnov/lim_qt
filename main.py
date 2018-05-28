@@ -447,15 +447,17 @@ class Ui_MainWindow(object):
                 while x < area:
                     y = ne.evaluate(function)
                     if int(y) > 100 or int(y) < -100:
-                        ydots.update({str(i): Y})
-                        xdots.update({str(i): X})
+                        #Y.append(0)
+                        #X.append(0)
+                        #ydots.update({str(i): Y})
+                        #xdots.update({str(i): X})
                         x += step
                         continue
                     else:    #continue
                         Y.append(y)
                         X.append(x)
-                    ydots.update({str(i): Y})
-                    xdots.update({str(i): X})
+                        ydots.update({str(i): Y})
+                        xdots.update({str(i): X})
                     x += step
 
                 self.dataX = xdots.get(str(i))
@@ -616,7 +618,6 @@ class Ui_MainWindow(object):
 
             if lim[0] == '<':
                 return 0
-
 
             x = -area
 
