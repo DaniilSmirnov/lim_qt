@@ -246,8 +246,6 @@ class Ui_MainWindow(object):
                 self.dataY = ydots.get(str(items))
 
                 self.graphicsView.plot(self.dataX, self.dataY, pen=(colors[int(items)], 3))
-                self.graphicsView.setXRange(-10, 10)
-                self.graphicsView.setYRange(-10, 10)
 
             self.graphicsView.setXRange(-10, 10)
             self.graphicsView.setYRange(-10, 10)
@@ -453,7 +451,7 @@ class Ui_MainWindow(object):
                         #xdots.update({str(i): X})
                         x += step
                         continue
-                    else:    #continue
+                    else:
                         Y.append(y)
                         X.append(x)
                         ydots.update({str(i): Y})
@@ -496,7 +494,7 @@ class Ui_MainWindow(object):
 
             dif = ne.evaluate(dif)
 
-            fx0 =  ne.evaluate(function)
+            fx0 = ne.evaluate(function)
 
             function = str(fx0)+"+"+str(dif)+"*"+ "(" + "x" + "-" + str(point) + ")"
 
