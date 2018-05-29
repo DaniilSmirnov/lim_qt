@@ -98,6 +98,7 @@ class Ui_MainWindow(object):
         self.grid.addWidget(self.delete_button, 2, 1)
 
         pg.setConfigOption('background','w')
+        pg.setConfigOption('foreground','k')
         self.graphicsView = pg.PlotWidget(self.centralwidget)
         self.graphicsView.setObjectName("graphicsView")
         self.grid.addWidget(self.graphicsView, 6, 0, 7, 0)
@@ -422,6 +423,7 @@ class Ui_MainWindow(object):
             self.graphicsView = pg.PlotWidget(self.centralwidget)
             self.graphicsView.setObjectName("graphicsView")
             self.grid.addWidget(self.graphicsView, 6, 0, 7, 0)
+            self.graphicsView.showAxis('right')
 
             global i
 

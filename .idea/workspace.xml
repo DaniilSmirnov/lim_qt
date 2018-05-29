@@ -16,17 +16,16 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/lim_qt$Unnamed.coverage" NAME="Unnamed Coverage Results" MODIFIED="1527587643385" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/lim_qt$Unnamed.coverage" NAME="Unnamed Coverage Results" MODIFIED="1527590091335" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="main.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="319">
-              <caret line="420" column="33" selection-start-line="420" selection-start-column="33" selection-end-line="420" selection-end-column="33" />
+            <state relative-caret-position="153">
+              <caret line="100" column="42" selection-start-line="100" selection-start-column="42" selection-end-line="100" selection-end-column="42" />
               <folding>
-                <element signature="e#698#4179#0" />
                 <element signature="e#4230#5336#0" />
                 <element signature="e#5372#5475#0" />
                 <element signature="e#5507#6230#0" />
@@ -163,13 +162,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1522328886146</updated>
-    </task>
-    <task id="LOCAL-00008" summary="Переработан макет приложения">
-      <created>1524073017631</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1524073017631</updated>
     </task>
     <task id="LOCAL-00009" summary="fix">
       <created>1524073390381</created>
@@ -507,7 +499,14 @@
       <option name="project" value="LOCAL" />
       <updated>1527578696410</updated>
     </task>
-    <option name="localTasksCounter" value="57" />
+    <task id="LOCAL-00057" summary="Cменен фон на белый">
+      <created>1527587676892</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1527587676892</updated>
+    </task>
+    <option name="localTasksCounter" value="58" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -548,7 +547,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="редактирование работает, но с ошибками&#10;кнопка удаления работает, но с ошибками&#10;Начато добавление кнопок перехода между модулями&#10;Реализованы инструкции, но через tkinter" />
     <MESSAGE value="редактирование работает, но с ошибками&#10;кнопка удаления работает, но с ошибками&#10;Добавлен переход в модуль 1&#10;Реализованы инструкции, но через tkinter" />
     <MESSAGE value="редактирование работает&#10;кнопка удаления работает, но с ошибками&#10;Добавлен переход в модуль 1 и в модуль 2&#10;Модуль 2 не реализован&#10;Реализованы инструкции, но через tkinter" />
     <MESSAGE value="кнопка удаления работает, но с ошибками&#10;Добавлен переход в модуль 1 и в модуль 2&#10;Модуль 2 не реализован&#10;Реализованы инструкции, но через tkinter&#10;Реализована работа с несуществующими пределами" />
@@ -573,7 +571,8 @@
     <MESSAGE value="Косяки с сохранением&#10;Немного визуальных украшательств" />
     <MESSAGE value="Надо решить вопрос с гиперболой" />
     <MESSAGE value="Кривая обработка гипербол, но обработка" />
-    <option name="LAST_COMMIT_MESSAGE" value="Кривая обработка гипербол, но обработка" />
+    <MESSAGE value="Cменен фон на белый" />
+    <option name="LAST_COMMIT_MESSAGE" value="Cменен фон на белый" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -954,10 +953,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="319">
-          <caret line="420" column="33" selection-start-line="420" selection-start-column="33" selection-end-line="420" selection-end-column="33" />
+        <state relative-caret-position="153">
+          <caret line="100" column="42" selection-start-line="100" selection-start-column="42" selection-end-line="100" selection-end-column="42" />
           <folding>
-            <element signature="e#698#4179#0" />
             <element signature="e#4230#5336#0" />
             <element signature="e#5372#5475#0" />
             <element signature="e#5507#6230#0" />
