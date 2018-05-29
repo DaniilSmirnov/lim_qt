@@ -97,6 +97,7 @@ class Ui_MainWindow(object):
         self.delete_button.setObjectName("pushButton")
         self.grid.addWidget(self.delete_button, 2, 1)
 
+        pg.setConfigOption('background','w')
         self.graphicsView = pg.PlotWidget(self.centralwidget)
         self.graphicsView.setObjectName("graphicsView")
         self.grid.addWidget(self.graphicsView, 6, 0, 7, 0)
@@ -417,6 +418,11 @@ class Ui_MainWindow(object):
 
         try:
 
+            self.graphicsView.close()
+            self.graphicsView = pg.PlotWidget(self.centralwidget)
+            self.graphicsView.setObjectName("graphicsView")
+            self.grid.addWidget(self.graphicsView, 6, 0, 7, 0)
+
             global i
 
             function = self.function_enter.text()
@@ -445,10 +451,6 @@ class Ui_MainWindow(object):
                 while x < area:
                     y = ne.evaluate(function)
                     if int(y) > 100 or int(y) < -100:
-                        #Y.append(0)
-                        #X.append(0)
-                        #ydots.update({str(i): Y})
-                        #xdots.update({str(i): X})
                         x += step
                         continue
                     else:
@@ -466,6 +468,8 @@ class Ui_MainWindow(object):
                 c = randint(1, 10)
                 colors.append(c)
                 self.graphicsView.plot(self.dataX, self.dataY, pen=(colors[i], 3))
+
+
         except BaseException:
             self.result.setText("Error")
             alert(text='Error in draw module \n Please check function enter', title='Error', button='OK')
