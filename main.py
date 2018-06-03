@@ -156,17 +156,13 @@ class Ui_MainWindow(object):
 
         self.function_enter.textChanged.connect(self.draw)
         self.point_enter.textChanged.connect(self.draw)
-        self.epsilon_button.clicked.connect(self.draw_epsilon)
+        self.epsilon_enter1.textChanged.connect(self.draw_epsilon)
+        self.epsilon_enter2.textChanged.connect(self.draw_epsilon)
+        self.epsilon_enter3.textChanged.connect(self.draw_epsilon)
         self.save_button.clicked.connect(self.save)
         self.clean_all_button.clicked.connect(self.clean_all_functions, True)
 
         MainWindow.show()
-
-    def setI(self, text):
-        global i,edit,function_e
-        i=functions_list.index(text)
-        edit=True
-        function_e=text
 
     def delete(self):
         try:
@@ -221,18 +217,9 @@ class Ui_MainWindow(object):
 
             function = self.function_enter.text()
             functions_list.append(str(function))
-            self.graphics.addItem(str(function))
             self.clean_all_functions(False)
 
             i += 1
-
-            if edit:
-                j = functions_list.index(function_e)
-                self.graphics.removeItem(j+1)
-                del xdots[str(j)]
-                del ydots[str(j)]
-
-                i -= 1
 
             for items in xdots:
 

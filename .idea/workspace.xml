@@ -23,15 +23,20 @@
       <file leaf-file-name="main.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
-              <caret line="646" column="29" selection-start-line="646" selection-start-column="29" selection-end-line="646" selection-end-column="29" />
+            <state relative-caret-position="201">
+              <caret line="161" column="49" selection-start-line="161" selection-start-column="49" selection-end-line="161" selection-end-column="49" />
               <folding>
+                <element signature="e#8228#10206#0" />
+                <element signature="e#10249#13111#0" />
+                <element signature="e#13155#13243#0" />
                 <element signature="e#13288#13553#0" />
                 <element signature="e#13596#13693#0" />
                 <element signature="e#13732#13829#0" />
                 <element signature="e#13860#15755#0" />
                 <element signature="e#15789#16926#0" />
                 <element signature="e#16961#18674#0" />
+                <element signature="e#17656#19984#0" />
+                <element signature="e#20323#20595#0" />
               </folding>
             </state>
           </provider>
@@ -153,13 +158,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1522328886146</updated>
-    </task>
-    <task id="LOCAL-00010" summary="добавлена отрисовка эпсилона по нажатию кнопки">
-      <created>1524076731735</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1524076731735</updated>
     </task>
     <task id="LOCAL-00011" summary="Добавлены пункты в меню для переключения модулей&#10;Добавлена функция очистки перед перерисовкой">
       <created>1524083371191</created>
@@ -497,7 +495,14 @@
       <option name="project" value="LOCAL" />
       <updated>1527592147991</updated>
     </task>
-    <option name="localTasksCounter" value="59" />
+    <task id="LOCAL-00059" summary="3 эпсилона">
+      <created>1528008696172</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1528008696172</updated>
+    </task>
+    <option name="localTasksCounter" value="60" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -509,7 +514,7 @@
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Python Console" order="7" weight="0.3286385" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49633968" visible="true" weight="0.1940532" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49633968" weight="0.1940532" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info content_ui="combo" id="Project" order="0" weight="0.17423134" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
@@ -538,7 +543,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="редактирование работает, но с ошибками&#10;кнопка удаления работает, но с ошибками&#10;Добавлен переход в модуль 1&#10;Реализованы инструкции, но через tkinter" />
     <MESSAGE value="редактирование работает&#10;кнопка удаления работает, но с ошибками&#10;Добавлен переход в модуль 1 и в модуль 2&#10;Модуль 2 не реализован&#10;Реализованы инструкции, но через tkinter" />
     <MESSAGE value="кнопка удаления работает, но с ошибками&#10;Добавлен переход в модуль 1 и в модуль 2&#10;Модуль 2 не реализован&#10;Реализованы инструкции, но через tkinter&#10;Реализована работа с несуществующими пределами" />
     <MESSAGE value="кнопка удаления работает, но с ошибками&#10;Пофикшены баги в переходах&#10;Модуль 2 не реализован" />
@@ -563,7 +567,8 @@
     <MESSAGE value="Надо решить вопрос с гиперболой" />
     <MESSAGE value="Кривая обработка гипербол, но обработка" />
     <MESSAGE value="Cменен фон на белый" />
-    <option name="LAST_COMMIT_MESSAGE" value="Cменен фон на белый" />
+    <MESSAGE value="3 эпсилона" />
+    <option name="LAST_COMMIT_MESSAGE" value="3 эпсилона" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -944,15 +949,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="646" column="29" selection-start-line="646" selection-start-column="29" selection-end-line="646" selection-end-column="29" />
+        <state relative-caret-position="201">
+          <caret line="161" column="49" selection-start-line="161" selection-start-column="49" selection-end-line="161" selection-end-column="49" />
           <folding>
+            <element signature="e#8228#10206#0" />
+            <element signature="e#10249#13111#0" />
+            <element signature="e#13155#13243#0" />
             <element signature="e#13288#13553#0" />
             <element signature="e#13596#13693#0" />
             <element signature="e#13732#13829#0" />
             <element signature="e#13860#15755#0" />
             <element signature="e#15789#16926#0" />
             <element signature="e#16961#18674#0" />
+            <element signature="e#17656#19984#0" />
+            <element signature="e#20323#20595#0" />
           </folding>
         </state>
       </provider>
