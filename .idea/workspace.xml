@@ -16,31 +16,22 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/lim_qt$Unnamed.coverage" NAME="Unnamed Coverage Results" MODIFIED="1527590091335" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/lim_qt$Unnamed.coverage" NAME="Unnamed Coverage Results" MODIFIED="1528008635264" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="main.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="100" column="42" selection-start-line="100" selection-start-column="42" selection-end-line="100" selection-end-column="42" />
+            <state relative-caret-position="336">
+              <caret line="646" column="29" selection-start-line="646" selection-start-column="29" selection-end-line="646" selection-end-column="29" />
               <folding>
-                <element signature="e#4230#5336#0" />
-                <element signature="e#5372#5475#0" />
-                <element signature="e#5507#6230#0" />
-                <element signature="e#6270#7130#0" />
-                <element signature="e#7160#8206#0" />
-                <element signature="e#8244#10222#0" />
-                <element signature="e#10265#13127#0" />
-                <element signature="e#13171#13259#0" />
-                <element signature="e#13304#13569#0" />
-                <element signature="e#13612#13709#0" />
-                <element signature="e#13748#13845#0" />
-                <element signature="e#15716#16854#0" />
-                <element signature="e#15966#16854#0" />
-                <element signature="e#16889#18602#0" />
-                <element signature="e#18641#20199#0" />
+                <element signature="e#13288#13553#0" />
+                <element signature="e#13596#13693#0" />
+                <element signature="e#13732#13829#0" />
+                <element signature="e#13860#15755#0" />
+                <element signature="e#15789#16926#0" />
+                <element signature="e#16961#18674#0" />
               </folding>
             </state>
           </provider>
@@ -162,13 +153,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1522328886146</updated>
-    </task>
-    <task id="LOCAL-00009" summary="fix">
-      <created>1524073390381</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1524073390381</updated>
     </task>
     <task id="LOCAL-00010" summary="добавлена отрисовка эпсилона по нажатию кнопки">
       <created>1524076731735</created>
@@ -506,7 +490,14 @@
       <option name="project" value="LOCAL" />
       <updated>1527587676892</updated>
     </task>
-    <option name="localTasksCounter" value="58" />
+    <task id="LOCAL-00058" summary="Cменен фон на белый">
+      <created>1527592147991</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1527592147991</updated>
+    </task>
+    <option name="localTasksCounter" value="59" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -953,24 +944,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="100" column="42" selection-start-line="100" selection-start-column="42" selection-end-line="100" selection-end-column="42" />
+        <state relative-caret-position="336">
+          <caret line="646" column="29" selection-start-line="646" selection-start-column="29" selection-end-line="646" selection-end-column="29" />
           <folding>
-            <element signature="e#4230#5336#0" />
-            <element signature="e#5372#5475#0" />
-            <element signature="e#5507#6230#0" />
-            <element signature="e#6270#7130#0" />
-            <element signature="e#7160#8206#0" />
-            <element signature="e#8244#10222#0" />
-            <element signature="e#10265#13127#0" />
-            <element signature="e#13171#13259#0" />
-            <element signature="e#13304#13569#0" />
-            <element signature="e#13612#13709#0" />
-            <element signature="e#13748#13845#0" />
-            <element signature="e#15716#16854#0" />
-            <element signature="e#15966#16854#0" />
-            <element signature="e#16889#18602#0" />
-            <element signature="e#18641#20199#0" />
+            <element signature="e#13288#13553#0" />
+            <element signature="e#13596#13693#0" />
+            <element signature="e#13732#13829#0" />
+            <element signature="e#13860#15755#0" />
+            <element signature="e#15789#16926#0" />
+            <element signature="e#16961#18674#0" />
           </folding>
         </state>
       </provider>

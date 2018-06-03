@@ -77,9 +77,17 @@ class Ui_MainWindow(object):
         self.point_enter.setObjectName("lineEdit")
         self.grid.addWidget(self.point_enter, 4, 0)
 
-        self.epsilon_enter = QLineEdit(self.centralwidget)
-        self.epsilon_enter.setObjectName("lineEdit")
-        self.grid.addWidget(self.epsilon_enter, 5, 0)
+        self.epsilon_enter1 = QLineEdit(self.centralwidget)
+        self.epsilon_enter1.setObjectName("lineEdit")
+        self.grid.addWidget(self.epsilon_enter1, 5, 0)
+
+        self.epsilon_enter2 = QLineEdit(self.centralwidget)
+        self.epsilon_enter2.setObjectName("lineEdit")
+        self.grid.addWidget(self.epsilon_enter2, 5, 1)
+
+        self.epsilon_enter3 = QLineEdit(self.centralwidget)
+        self.epsilon_enter3.setObjectName("lineEdit")
+        self.grid.addWidget(self.epsilon_enter3, 5, 2)
 
         self.save_button = QPushButton(self.centralwidget)
         self.save_button.setObjectName("pushButton")
@@ -87,26 +95,17 @@ class Ui_MainWindow(object):
 
         self.epsilon_button = QPushButton(self.centralwidget)
         self.epsilon_button.setObjectName("pushButton")
-        self.grid.addWidget(self.epsilon_button, 5, 1)
+        self.grid.addWidget(self.epsilon_button, 5, 3)
 
         self.clean_all_button = QPushButton(self.centralwidget)
         self.clean_all_button.setObjectName("pushButton")
         self.grid.addWidget(self.clean_all_button, 4, 1)
-
-        self.delete_button=QPushButton(self.centralwidget)
-        self.delete_button.setObjectName("pushButton")
-        self.grid.addWidget(self.delete_button, 2, 1)
 
         pg.setConfigOption('background','w')
         pg.setConfigOption('foreground','k')
         self.graphicsView = pg.PlotWidget(self.centralwidget)
         self.graphicsView.setObjectName("graphicsView")
         self.grid.addWidget(self.graphicsView, 6, 0, 7, 0)
-
-        self.graphics = QComboBox(self.centralwidget)
-        self.graphics.setObjectName("graphics")
-        self.grid.addWidget(self.graphics, 2, 0)
-        self.graphics.addItem(" ")
 
         MainWindow.setCentralWidget(self.centralwidget)
 
@@ -148,11 +147,10 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(_translate("MainWindow", "Limit"))
         self.function_enter.setText(_translate("MainWindow", "x"))
         self.point_enter.setText(_translate("MainWindow", "oo"))
-        self.epsilon_enter.setText(_translate("MainWindow", "1"))
+        self.epsilon_enter1.setText(_translate("MainWindow", "1"))
         self.epsilon_button.setText(_translate("MainWindow", "Draw epsilon"))
         self.save_button.setText(_translate("MainWindow", "Save"))
-        self.delete_button.setText(_translate("MainWindow", "Delete"))
-        self.clean_all_button.setText(_translate("MainWindow", "Clean all"))
+        self.clean_all_button.setText(_translate("MainWindow", "Clean"))
         self.delta.setText(_translate("MainWindow", " "))
 
 
@@ -160,8 +158,6 @@ class Ui_MainWindow(object):
         self.point_enter.textChanged.connect(self.draw)
         self.epsilon_button.clicked.connect(self.draw_epsilon)
         self.save_button.clicked.connect(self.save)
-        self.graphics.activated[str].connect(self.setI)
-        self.delete_button.clicked.connect(self.delete)
         self.clean_all_button.clicked.connect(self.clean_all_functions, True)
 
         MainWindow.show()
@@ -203,13 +199,11 @@ class Ui_MainWindow(object):
             self.delta.close()
             self.function_enter.close()
             self.point_enter.close()
-            self.epsilon_enter.close()
+            self.epsilon_enter1.close()
             self.epsilon_button.close()
             self.clean_all_button.close()
             self.graphicsView.close()
             self.save_button.close()
-            self.delete_button.close()
-            self.graphics.close()
         if exec == 0:
             self.graphicsView.close()
             self.draw_df.close()
@@ -219,8 +213,6 @@ class Ui_MainWindow(object):
             self.function_enter.close()
             self.point_enter.close()
             self.save_button.close()
-            self.delete_button.close()
-            self.graphics.close()
             self.clean_all_button.close()
 
     def save(self):
@@ -280,9 +272,9 @@ class Ui_MainWindow(object):
         self.point_enter.setObjectName("lineEdit")
         self.grid.addWidget(self.point_enter, 4, 0)
 
-        self.epsilon_enter = QLineEdit(self.centralwidget)
-        self.epsilon_enter.setObjectName("lineEdit")
-        self.grid.addWidget(self.epsilon_enter, 5, 0)
+        self.epsilon_enter1 = QLineEdit(self.centralwidget)
+        self.epsilon_enter1.setObjectName("lineEdit")
+        self.grid.addWidget(self.epsilon_enter1, 5, 0)
 
         self.save_button = QPushButton(self.centralwidget)
         self.save_button.setObjectName("pushButton")
@@ -296,18 +288,9 @@ class Ui_MainWindow(object):
         self.clean_all_button.setObjectName("pushButton")
         self.grid.addWidget(self.clean_all_button, 4, 1)
 
-        self.delete_button = QPushButton(self.centralwidget)
-        self.delete_button.setObjectName("pushButton")
-        self.grid.addWidget(self.delete_button, 2, 1)
-
         self.graphicsView = pg.PlotWidget(self.centralwidget)
         self.graphicsView.setObjectName("graphicsView")
         self.grid.addWidget(self.graphicsView, 6, 0, 7, 0)
-
-        self.graphics = QComboBox(self.centralwidget)
-        self.graphics.setObjectName("graphics")
-        self.grid.addWidget(self.graphics, 2, 0)
-        self.graphics.addItem(" ")
 
         self.retranslateUi(MainWindow)
 
@@ -362,15 +345,6 @@ class Ui_MainWindow(object):
         self.clean_all_button = QPushButton(self.centralwidget)
         self.clean_all_button.setObjectName("pushButton")
         self.grid.addWidget(self.clean_all_button, 3, 1)
-
-        self.delete_button = QPushButton(self.centralwidget)
-        self.delete_button.setObjectName("pushButton")
-        self.grid.addWidget(self.delete_button, 3, 2)
-
-        self.graphics = QComboBox(self.centralwidget)
-        self.graphics.setObjectName("graphics")
-        self.grid.addWidget(self.graphics, 4, 0)
-        self.graphics.addItem(" ")
 
         self.graphicsView = pg.PlotWidget(self.centralwidget)
         self.graphicsView.setObjectName("graphicsView")
@@ -601,13 +575,20 @@ class Ui_MainWindow(object):
 
         function = self.function_enter.text()
         point = self.point_enter.text()
-        e = float(self.epsilon_enter.text())
+        e1 = float(self.epsilon_enter1.text())
+        e2 = float(self.epsilon_enter2.text())
+        e3 = float(self.epsilon_enter3.text())
         self.delta.setText(" ")
 
         Ex = []
         Ey = []
         Ey1 = []
-        Y = []
+
+        Ey2 = []
+        Ey3 = []
+
+        Ey4 = []
+        Ey5 = []
 
         if (self.brackets_balance(function) or self.brackets_check(function)) and self.func_check(function):
 
@@ -632,21 +613,38 @@ class Ui_MainWindow(object):
                 x += step
 
                 if str(lim) == 'oo' or str(lim) == '-oo':
-                    Ey.append(float(10 - e))
-                    Ey1.append(float(10 + e))
+                    Ey.append(float(10 - e1))
+                    Ey1.append(float(10 + e1))
+                    Ey2.append(float(10 - e2))
+                    Ey3.append(float(10 + e2))
+                    Ey4.append(float(10 + e3))
+                    Ey5.append(float(10 + e3))
                 else:
-                    Ey.append(float(float(lim) - e))
-                    Ey1.append(float(float(lim) + e))
-                    if y == float(float(lim) - e) or y == float(float(lim) + e):
-                        self.delta.setText("y = " + str(y))
+                    Ey.append(float(float(lim) - e1))
+                    Ey1.append(float(float(lim) + e1))
+                    Ey2.append(float(float(lim) + e2))
+                    Ey3.append(float(float(lim) + e2))
+                    Ey4.append(float(float(lim) + e3))
+                    Ey5.append(float(float(lim) + e3))
 
-                exdots.update({str(i): Ex})
-                eydots.update({str(i): Ey})
-                ey1dots.update({str(i): Ey1})
 
-            self.dataEx = exdots.get(str(i))
-            self.dataEy = eydots.get(str(i))
-            self.dataEy1 = ey1dots.get(str(i))
+            self.dataEx = Ex
+            self.dataEy = Ey
+            self.dataEy1 = Ey1
+
+            self.graphicsView.plot(self.dataEx, self.dataEy, pen=(3, 3))
+            self.graphicsView.plot(self.dataEx, self.dataEy1, pen=(3, 3))
+
+            self.dataEx = Ex
+            self.dataEy = Ey2
+            self.dataEy1 = Ey3
+
+            self.graphicsView.plot(self.dataEx, self.dataEy, pen=(3, 3))
+            self.graphicsView.plot(self.dataEx, self.dataEy1, pen=(3, 3))
+
+            self.dataEx = Ex
+            self.dataEy = Ey4
+            self.dataEy1 = Ey5
 
             self.graphicsView.plot(self.dataEx, self.dataEy, pen=(3, 3))
             self.graphicsView.plot(self.dataEx, self.dataEy1, pen=(3, 3))
