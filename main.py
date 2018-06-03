@@ -1,5 +1,3 @@
-#TODO:Пофиксить редактирование
-
 from random import *
 import numexpr as ne
 import pyqtgraph as pg
@@ -148,11 +146,12 @@ class Ui_MainWindow(object):
         self.function_enter.setText(_translate("MainWindow", "x"))
         self.point_enter.setText(_translate("MainWindow", "oo"))
         self.epsilon_enter1.setText(_translate("MainWindow", "1"))
+        self.epsilon_enter2.setText(_translate("MainWindow", "1"))
+        self.epsilon_enter3.setText(_translate("MainWindow", "1"))
         self.epsilon_button.setText(_translate("MainWindow", "Draw epsilon"))
         self.save_button.setText(_translate("MainWindow", "Save"))
         self.clean_all_button.setText(_translate("MainWindow", "Clean"))
         self.delta.setText(_translate("MainWindow", " "))
-
 
         self.function_enter.textChanged.connect(self.draw)
         self.point_enter.textChanged.connect(self.draw)
@@ -163,31 +162,6 @@ class Ui_MainWindow(object):
         self.clean_all_button.clicked.connect(self.clean_all_functions, True)
 
         MainWindow.show()
-
-    def delete(self):
-        try:
-            global function_e
-            global i
-
-            j = functions_list.index(function_e)
-            self.graphics.removeItem(i+1)
-
-            del xdots[str(i)]
-            del ydots[str(i)]
-
-            self.clean_all_functions(False)
-
-            for items in xdots:
-                self.dataX = xdots.get(str(items))
-                self.dataY = ydots.get(str(items))
-
-                self.graphicsView.plot(self.dataX, self.dataY, pen=(colors[int(items)], 3))
-
-            self.graphicsView.setXRange(-10, 10)
-            self.graphicsView.setYRange(-10, 10)
-        except BaseException:
-            alert(text='Error in delete \n Please contact dev', title='Error', button='OK')
-            return 0
 
     def clean_all(self,exec):
         if exec == 1:
@@ -562,9 +536,23 @@ class Ui_MainWindow(object):
 
         function = self.function_enter.text()
         point = self.point_enter.text()
-        e1 = float(self.epsilon_enter1.text())
-        e2 = float(self.epsilon_enter2.text())
-        e3 = float(self.epsilon_enter3.text())
+
+        e1_exec =  True
+        e2_exec = True
+        e3_exec = True
+
+        try:
+            e1 = float(self.epsilon_enter1.text())
+        except BaseException:
+            e1_exec = False
+        try:
+            e2 = float(self.epsilon_enter2.text())
+        except BaseException:
+            e2_exec = False
+        try:
+            e3 = float(self.epsilon_enter3.text())
+        except BaseException:
+            e3_exec = False
         self.delta.setText(" ")
 
         Ex = []
@@ -595,46 +583,59 @@ class Ui_MainWindow(object):
 
             while x < area:
 
-                y = ne.evaluate(function)
                 Ex.append(x)
                 x += step
 
                 if str(lim) == 'oo' or str(lim) == '-oo':
-                    Ey.append(float(10 - e1))
-                    Ey1.append(float(10 + e1))
-                    Ey2.append(float(10 - e2))
-                    Ey3.append(float(10 + e2))
-                    Ey4.append(float(10 + e3))
-                    Ey5.append(float(10 + e3))
+                    if e1_exec:
+                        if e1 <= 0:
+                            e1_exec = False
+                        Ey1.append(float(10 + e1))
+                        Ey.append(float(10 - e1))
+                    if e2_exec:
+                        if e2 <= 0:
+                            e2_exec = False
+                        Ey2.append(float(10 - e2))
+                        Ey3.append(float(10 + e2))
+                    if e3_exec:
+                        if e3 <= 0:
+                            e3_exec = False
+                        Ey4.append(float(10 + e3))
+                        Ey5.append(float(10 + e3))
                 else:
-                    Ey.append(float(float(lim) - e1))
-                    Ey1.append(float(float(lim) + e1))
-                    Ey2.append(float(float(lim) + e2))
-                    Ey3.append(float(float(lim) + e2))
-                    Ey4.append(float(float(lim) + e3))
-                    Ey5.append(float(float(lim) + e3))
+                    if e1_exec:
+                        Ey.append(float(float(lim) - e1))
+                        Ey1.append(float(float(lim) + e1))
+                    if e2_exec:
+                        Ey2.append(float(float(lim) + e2))
+                        Ey3.append(float(float(lim) + e2))
+                    if e3_exec:
+                        Ey4.append(float(float(lim) + e3))
+                        Ey5.append(float(float(lim) + e3))
 
+            if e1_exec:
+                self.dataEx = Ex
+                self.dataEy = Ey
+                self.dataEy1 = Ey1
 
-            self.dataEx = Ex
-            self.dataEy = Ey
-            self.dataEy1 = Ey1
+                self.graphicsView.plot(self.dataEx, self.dataEy, pen=(3, 3))
+                self.graphicsView.plot(self.dataEx, self.dataEy1, pen=(3, 3))
 
-            self.graphicsView.plot(self.dataEx, self.dataEy, pen=(3, 3))
-            self.graphicsView.plot(self.dataEx, self.dataEy1, pen=(3, 3))
+            if e2_exec:
+                self.dataEx = Ex
+                self.dataEy = Ey2
+                self.dataEy1 = Ey3
 
-            self.dataEx = Ex
-            self.dataEy = Ey2
-            self.dataEy1 = Ey3
+                self.graphicsView.plot(self.dataEx, self.dataEy, pen=(3, 3))
+                self.graphicsView.plot(self.dataEx, self.dataEy1, pen=(3, 3))
 
-            self.graphicsView.plot(self.dataEx, self.dataEy, pen=(3, 3))
-            self.graphicsView.plot(self.dataEx, self.dataEy1, pen=(3, 3))
+            if e3_exec:
+                self.dataEx = Ex
+                self.dataEy = Ey4
+                self.dataEy1 = Ey5
 
-            self.dataEx = Ex
-            self.dataEy = Ey4
-            self.dataEy1 = Ey5
-
-            self.graphicsView.plot(self.dataEx, self.dataEy, pen=(3, 3))
-            self.graphicsView.plot(self.dataEx, self.dataEy1, pen=(3, 3))
+                self.graphicsView.plot(self.dataEx, self.dataEy, pen=(3, 3))
+                self.graphicsView.plot(self.dataEx, self.dataEy1, pen=(3, 3))
 
     def clean_all_functions(self, exec):
 
