@@ -354,11 +354,7 @@ class Ui_MainWindow(object):
 
         try:
 
-            self.graphicsView.close()
-            self.graphicsView = pg.PlotWidget(self.centralwidget)
-            self.graphicsView.setObjectName("graphicsView")
-            self.grid.addWidget(self.graphicsView, 6, 0, 7, 0)
-            self.graphicsView.showAxis('right')
+            self.clean_all_functions(False)
 
             global i
 
@@ -537,7 +533,7 @@ class Ui_MainWindow(object):
         function = self.function_enter.text()
         point = self.point_enter.text()
 
-        e1_exec =  True
+        e1_exec = True
         e2_exec = True
         e3_exec = True
 
