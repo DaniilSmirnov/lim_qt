@@ -42,7 +42,7 @@ function_e = " "
 
 amount = 5
 
-instructions='  **     to power \n ' \
+instructions = '  **     to power \n ' \
              ' sqrt   to square root \n' \
 
 
