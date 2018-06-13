@@ -73,31 +73,23 @@ class Ui_MainWindow(object):
 
         self.point_enter = QLineEdit(self.centralwidget)
         self.point_enter.setObjectName("lineEdit")
-        self.grid.addWidget(self.point_enter, 4, 0)
+        self.grid.addWidget(self.point_enter, 3, 1)
 
         self.epsilon_enter1 = QLineEdit(self.centralwidget)
         self.epsilon_enter1.setObjectName("lineEdit")
-        self.grid.addWidget(self.epsilon_enter1, 5, 0)
+        self.grid.addWidget(self.epsilon_enter1, 4, 0)
 
         self.epsilon_enter2 = QLineEdit(self.centralwidget)
         self.epsilon_enter2.setObjectName("lineEdit")
-        self.grid.addWidget(self.epsilon_enter2, 5, 1)
+        self.grid.addWidget(self.epsilon_enter2, 4, 1)
 
         self.epsilon_enter3 = QLineEdit(self.centralwidget)
         self.epsilon_enter3.setObjectName("lineEdit")
-        self.grid.addWidget(self.epsilon_enter3, 5, 2)
-
-        self.save_button = QPushButton(self.centralwidget)
-        self.save_button.setObjectName("pushButton")
-        self.grid.addWidget(self.save_button, 3, 1)
-
-        self.epsilon_button = QPushButton(self.centralwidget)
-        self.epsilon_button.setObjectName("pushButton")
-        self.grid.addWidget(self.epsilon_button, 5, 3)
+        self.grid.addWidget(self.epsilon_enter3, 4, 2)
 
         self.clean_all_button = QPushButton(self.centralwidget)
         self.clean_all_button.setObjectName("pushButton")
-        self.grid.addWidget(self.clean_all_button, 4, 1)
+        self.grid.addWidget(self.clean_all_button, 3, 2)
 
         pg.setConfigOption('background','w')
         pg.setConfigOption('foreground','k')
@@ -148,8 +140,6 @@ class Ui_MainWindow(object):
         self.epsilon_enter1.setText(_translate("MainWindow", "0"))
         self.epsilon_enter2.setText(_translate("MainWindow", "0"))
         self.epsilon_enter3.setText(_translate("MainWindow", "0"))
-        self.epsilon_button.setText(_translate("MainWindow", "Draw epsilon"))
-        self.save_button.setText(_translate("MainWindow", "Save"))
         self.clean_all_button.setText(_translate("MainWindow", "Clean"))
         self.delta.setText(_translate("MainWindow", " "))
 
