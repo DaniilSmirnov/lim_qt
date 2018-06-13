@@ -145,9 +145,9 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(_translate("MainWindow", "Limit"))
         self.function_enter.setText(_translate("MainWindow", "x"))
         self.point_enter.setText(_translate("MainWindow", "oo"))
-        self.epsilon_enter1.setText(_translate("MainWindow", "1"))
-        self.epsilon_enter2.setText(_translate("MainWindow", "1"))
-        self.epsilon_enter3.setText(_translate("MainWindow", "1"))
+        self.epsilon_enter1.setText(_translate("MainWindow", "0"))
+        self.epsilon_enter2.setText(_translate("MainWindow", "0"))
+        self.epsilon_enter3.setText(_translate("MainWindow", "0"))
         self.epsilon_button.setText(_translate("MainWindow", "Draw epsilon"))
         self.save_button.setText(_translate("MainWindow", "Save"))
         self.clean_all_button.setText(_translate("MainWindow", "Clean"))
@@ -158,7 +158,6 @@ class Ui_MainWindow(object):
         self.epsilon_enter1.textChanged.connect(self.draw_epsilon)
         self.epsilon_enter2.textChanged.connect(self.draw_epsilon)
         self.epsilon_enter3.textChanged.connect(self.draw_epsilon)
-        self.save_button.clicked.connect(self.save)
         self.clean_all_button.clicked.connect(self.clean_all_functions, True)
 
         MainWindow.show()
@@ -184,31 +183,6 @@ class Ui_MainWindow(object):
             self.point_enter.close()
             self.save_button.close()
             self.clean_all_button.close()
-
-    def save(self):
-        try:
-            global i, edit, function_e
-
-            function = self.function_enter.text()
-            functions_list.append(str(function))
-            self.clean_all_functions(False)
-
-            i += 1
-
-            for items in xdots:
-
-                self.dataX = xdots.get(str(items))
-                self.dataY = ydots.get(str(items))
-
-                self.graphicsView.plot(self.dataX, self.dataY, pen=(colors[int(items)], 3))
-
-            self.graphicsView.setXRange(-10, 10)
-            self.graphicsView.setYRange(-10, 10)
-
-
-        except BaseException:
-            alert(text='Error in save \n Please contact dev', title='Error', button='OK')
-            return 0
 
     def open_limits(self):
 
@@ -402,7 +376,7 @@ class Ui_MainWindow(object):
                 colors.append(c)
                 self.graphicsView.plot(self.dataX, self.dataY, pen=(colors[i], 3))
 
-
+                self.draw_epsilon()
         except BaseException:
             self.result.setText("Error")
             alert(text='Error in draw module \n Please check function enter', title='Error', button='OK')
@@ -549,7 +523,6 @@ class Ui_MainWindow(object):
             e3 = float(self.epsilon_enter3.text())
         except BaseException:
             e3_exec = False
-        self.delta.setText(" ")
 
         Ex = []
         Ey = []
@@ -572,8 +545,8 @@ class Ui_MainWindow(object):
 
             lim = str(lim)
 
-            if lim[0] == '<':
-                return 0
+            #if lim[0] == '<':
+             #   return 0
 
             x = -area
 
@@ -582,7 +555,7 @@ class Ui_MainWindow(object):
                 Ex.append(x)
                 x += step
 
-                if str(lim) == 'oo' or str(lim) == '-oo':
+                if str(lim) == 'oo' or str(lim) == '-oo' or str(lim).find('<') != -1 :
                     if e1_exec:
                         if e1 <= 0:
                             e1_exec = False
