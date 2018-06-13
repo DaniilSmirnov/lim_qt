@@ -159,10 +159,10 @@ class Ui_MainWindow(object):
             self.function_enter.close()
             self.point_enter.close()
             self.epsilon_enter1.close()
-            self.epsilon_button.close()
+            self.epsilon_enter2.close()
+            self.epsilon_enter3.close()
             self.clean_all_button.close()
             self.graphicsView.close()
-            self.save_button.close()
         if exec == 0:
             self.graphicsView.close()
             self.draw_df.close()
@@ -263,10 +263,6 @@ class Ui_MainWindow(object):
         self.draw_df.setText("df")
         self.draw_df.clicked.connect(self.drawdiff)
 
-        self.save_button = QPushButton(self.centralwidget)
-        self.save_button.setObjectName("pushButton")
-        self.grid.addWidget(self.save_button, 3, 0)
-
         self.clean_all_button = QPushButton(self.centralwidget)
         self.clean_all_button.setObjectName("pushButton")
         self.grid.addWidget(self.clean_all_button, 3, 1)
@@ -275,13 +271,8 @@ class Ui_MainWindow(object):
         self.graphicsView.setObjectName("graphicsView")
         self.grid.addWidget(self.graphicsView, 5, 0, 7, 0)
 
-        self.save_button.clicked.connect(self.save)
-        self.graphics.activated[str].connect(self.setI)
-        self.delete_button.clicked.connect(self.delete)
         self.clean_all_button.clicked.connect(self.clean_all_functions, True)
 
-        self.save_button.setText("Save")
-        self.delete_button.setText("Delete")
         self.clean_all_button.setText("Clean all")
 
     def open_instructions(self):

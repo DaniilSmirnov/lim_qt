@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="9e354d6b-c4ba-453c-99ff-d971e8482344" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -15,30 +16,18 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/lim_qt$Unnamed.coverage" NAME="Unnamed Coverage Results" MODIFIED="1528887096301" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/lim_qt$Unnamed.coverage" NAME="Unnamed Coverage Results" MODIFIED="1528908040828" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="main.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="552">
-              <caret line="504" column="27" selection-start-line="504" selection-start-column="27" selection-end-line="504" selection-end-column="27" />
+            <state relative-caret-position="267">
+              <caret line="160" column="12" selection-start-line="160" selection-start-column="12" selection-end-line="160" selection-end-column="12" />
               <folding>
-                <element signature="e#668#4226#0" />
-                <element signature="e#4277#5468#0" />
-                <element signature="e#5508#6223#0" />
-                <element signature="e#6969#8592#0" />
-                <element signature="e#8635#11139#0" />
-                <element signature="e#11183#11271#0" />
-                <element signature="e#11316#11581#0" />
-                <element signature="e#11624#11721#0" />
-                <element signature="e#11760#11857#0" />
-                <element signature="e#11888#13552#0" />
-                <element signature="e#13586#14723#0" />
-                <element signature="e#14758#16471#0" />
-                <element signature="e#15785#18917#0" />
-                <element signature="e#19703#19975#0" />
+                <element signature="e#3938#4932#0" />
+                <element signature="e#5728#7351#0" />
               </folding>
             </state>
           </provider>
@@ -160,13 +149,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1522328886146</updated>
-    </task>
-    <task id="LOCAL-00017" summary="save работает.draw с багами">
-      <created>1524335593209</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1524335593209</updated>
     </task>
     <task id="LOCAL-00018" summary="Fix">
       <created>1524336037105</created>
@@ -504,7 +486,14 @@
       <option name="project" value="LOCAL" />
       <updated>1528886820407</updated>
     </task>
-    <option name="localTasksCounter" value="66" />
+    <task id="LOCAL-00066" summary="переработано ui модуля 1">
+      <created>1528887126798</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1528887126798</updated>
+    </task>
+    <option name="localTasksCounter" value="67" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -516,7 +505,7 @@
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Python Console" order="7" weight="0.3286385" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49633968" visible="true" weight="0.1940532" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49633968" weight="0.1940532" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info content_ui="combo" id="Project" order="0" weight="0.17423134" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
@@ -524,7 +513,7 @@
       <window_info anchor="right" id="SciView" order="4" weight="0.37335286" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4956076" weight="0.4397496" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" sideWeight="0.4956076" visible="true" weight="0.4397496" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
@@ -545,7 +534,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Переделано сохранение эпсилона &#10;кнопка удаления работает, но с ошибками&#10;(Не перерисовываются графики, не удаляется последний пункт)&#10;Модуль 2 не реализован" />
     <MESSAGE value="кнопка удаления работает, но с ошибками&#10;(Не перерисовываются графики, не удаляется последний пункт)&#10;Модуль 2 начат" />
     <MESSAGE value="кнопка удаления работает, но с ошибками&#10;(Не перерисовываются графики, не удаляется последний пункт)&#10;Модуль 2 начат&#10;(отрисовка касательной в процессе)" />
     <MESSAGE value="кнопка удаления работает, но с ошибками&#10;(Не перерисовываются графики, не удаляется последний пункт)&#10;Модуль 2 начат&#10;(отрисовка касательной в процессе)&#10;Реализован переход" />
@@ -570,10 +558,18 @@
     <MESSAGE value="К эпсилонам добавлена защита" />
     <MESSAGE value="fix" />
     <MESSAGE value="module 1 logic is ready" />
-    <option name="LAST_COMMIT_MESSAGE" value="module 1 logic is ready" />
+    <MESSAGE value="переработано ui модуля 1" />
+    <option name="LAST_COMMIT_MESSAGE" value="переработано ui модуля 1" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/main.py</url>
+          <line>156</line>
+          <option name="timeStamp" value="89" />
+        </line-breakpoint>
+      </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
           <properties notifyOnTerminate="true" exception="BaseException">
@@ -581,7 +577,7 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="88" />
+      <option name="time" value="90" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
@@ -951,23 +947,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="552">
-          <caret line="504" column="27" selection-start-line="504" selection-start-column="27" selection-end-line="504" selection-end-column="27" />
+        <state relative-caret-position="267">
+          <caret line="160" column="12" selection-start-line="160" selection-start-column="12" selection-end-line="160" selection-end-column="12" />
           <folding>
-            <element signature="e#668#4226#0" />
-            <element signature="e#4277#5468#0" />
-            <element signature="e#5508#6223#0" />
-            <element signature="e#6969#8592#0" />
-            <element signature="e#8635#11139#0" />
-            <element signature="e#11183#11271#0" />
-            <element signature="e#11316#11581#0" />
-            <element signature="e#11624#11721#0" />
-            <element signature="e#11760#11857#0" />
-            <element signature="e#11888#13552#0" />
-            <element signature="e#13586#14723#0" />
-            <element signature="e#14758#16471#0" />
-            <element signature="e#15785#18917#0" />
-            <element signature="e#19703#19975#0" />
+            <element signature="e#3938#4932#0" />
+            <element signature="e#5728#7351#0" />
           </folding>
         </state>
       </provider>
