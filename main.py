@@ -355,7 +355,7 @@ class Ui_MainWindow(object):
                 self.graphicsView.setXRange(-10, 10)
                 c = randint(1, 10)
                 colors.append(c)
-                self.graphicsView.plot(self.dataX, self.dataY, pen=(colors[i], 3))
+                self.graphicsView.plot(self.dataX, self.dataY, title='Test',  pen=(1, 3))
 
                 #self.draw_epsilon()
         except BaseException:
@@ -406,7 +406,7 @@ class Ui_MainWindow(object):
             self.graphicsView.setYRange(-10, 10)
             self.graphicsView.setXRange(-10, 10)
             c = randint(1, 10)
-            self.graphicsView.plot(self.dataX, self.dataY, pen=(c, 3))
+            self.graphicsView.plot(self.dataX, self.dataY, title="Tangent", pen=(c, 3))
 
     def drawdiff(self):
 
