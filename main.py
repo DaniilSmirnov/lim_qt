@@ -376,7 +376,7 @@ class Ui_MainWindow(object):
                 colors.append(c)
                 self.graphicsView.plot(self.dataX, self.dataY, pen=(colors[i], 3))
 
-                self.draw_epsilon()
+                #self.draw_epsilon()
         except BaseException:
             self.result.setText("Error")
             alert(text='Error in draw module \n Please check function enter', title='Error', button='OK')
@@ -504,6 +504,7 @@ class Ui_MainWindow(object):
 
     def draw_epsilon(self):
 
+        self.draw()
         function = self.function_enter.text()
         point = self.point_enter.text()
 
@@ -555,7 +556,7 @@ class Ui_MainWindow(object):
                 Ex.append(x)
                 x += step
 
-                if str(lim) == 'oo' or str(lim) == '-oo' or str(lim).find('<') != -1 :
+                if str(lim) == 'oo' or str(lim) == '-oo' or str(lim).find('<') != -1:
                     if e1_exec:
                         if e1 <= 0:
                             e1_exec = False
