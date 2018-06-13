@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="9e354d6b-c4ba-453c-99ff-d971e8482344" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -156,13 +155,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1522328886146</updated>
-    </task>
-    <task id="LOCAL-00019" summary="Начато добавление возможности редактирования графиков">
-      <created>1524337307256</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1524337307256</updated>
     </task>
     <task id="LOCAL-00020" summary="Реализовано редактирование, но с багом ( остается старая метка)">
       <created>1524339147119</created>
@@ -500,7 +492,14 @@
       <option name="project" value="LOCAL" />
       <updated>1528908064709</updated>
     </task>
-    <option name="localTasksCounter" value="68" />
+    <task id="LOCAL-00068" summary="Не реализовано&#10;Подпись графиков&#10;Оси по прежнему через ЖОПУ">
+      <created>1528912353518</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1528912353518</updated>
+    </task>
+    <option name="localTasksCounter" value="69" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -541,7 +540,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="кнопка удаления работает, но с ошибками&#10;(Не перерисовываются графики, не удаляется последний пункт)&#10;Модуль 2 начат&#10;(отрисовка касательной в процессе)" />
     <MESSAGE value="кнопка удаления работает, но с ошибками&#10;(Не перерисовываются графики, не удаляется последний пункт)&#10;Модуль 2 начат&#10;(отрисовка касательной в процессе)&#10;Реализован переход" />
     <MESSAGE value="кнопка удаления работает, но с ошибками&#10;(Не перерисовываются графики, не удаляется последний пункт)&#10;Модуль 2 начат&#10;Реализована отрисовка касательной" />
     <MESSAGE value="кнопка удаления работает, но с ошибками&#10;(Не перерисовываются графики, не удаляется последний пункт)&#10;Отрисовывается приращение, касательная&#10;Баг в отрисовке графика модуля 2" />
@@ -566,7 +564,8 @@
     <MESSAGE value="module 1 logic is ready" />
     <MESSAGE value="переработано ui модуля 1" />
     <MESSAGE value="переработано ui модуля 2" />
-    <option name="LAST_COMMIT_MESSAGE" value="переработано ui модуля 2" />
+    <MESSAGE value="Не реализовано&#10;Подпись графиков&#10;Оси по прежнему через ЖОПУ" />
+    <option name="LAST_COMMIT_MESSAGE" value="Не реализовано&#10;Подпись графиков&#10;Оси по прежнему через ЖОПУ" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
