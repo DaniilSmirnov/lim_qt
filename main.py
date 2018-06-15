@@ -527,9 +527,6 @@ class Ui_MainWindow(object):
 
             lim = str(lim)
 
-            #if lim[0] == '<':
-             #   return 0
-
             x = -area
 
             while x < area:
